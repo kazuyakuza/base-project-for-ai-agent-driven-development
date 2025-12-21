@@ -31,4 +31,4 @@ build/
 dist/
 
 # Tokens and secrets
-.github-token
+.git-credentials
