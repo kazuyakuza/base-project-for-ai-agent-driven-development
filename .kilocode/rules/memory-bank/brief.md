@@ -38,9 +38,10 @@ All agents working on this project must adhere to the workflows and rules outlin
 
 Before starting any task, you must:
 
-1.  **Review `AGENTS.md`**: This file is the primary source of instructions for agents.
-2.  **Follow Workflows**: Strictly follow the procedures defined in `.ai-agent/WORKFLOWS.md`.
-3.  **Prioritize Workflows**: Always check `.ai-agent/WORKFLOWS.md` for defined procedures before any task.
+1. **Review `AGENTS.md`**: This file is the primary source of instructions for agents.
+2. **Follow Workflows**: It is crucial to follow the procedures defined in `.ai-agent/WORKFLOWS.md`.
+3. **Prioritize Workflows**: Always check `.ai-agent/WORKFLOWS.md` for defined procedures before any task.
+4. **Workflows Steps**: It is crucial to follow the steps defined in each workflow.
 
 Failure to comply with these instructions will result in incorrect or incomplete work.
 

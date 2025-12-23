@@ -14,7 +14,7 @@
   - Creates a detailed, step-by-step plan.
   - Refines the plan in tiny steps.
   - Review the plan for any necessary changes.
-  - **File Storage**: If the plan exceeds four steps, it is saved to a file in `.kilocode/_generated/plans/` with a unique name (e.g., `<datetime>-<plan-name>.md`).
+  - **File Storage**: the plan must be saved to a file in `.kilocode/_generated/plans/` with a unique name (e.g., `<datetime>-<plan-name>.md`) in almost all cases. So, the Coder Agent must receive this file to work on.
 
 ## 3. User Interaction
 

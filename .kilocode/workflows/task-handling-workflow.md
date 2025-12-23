@@ -6,7 +6,7 @@ Before proceeding with this workflow, it is essential to be familiar with the **
 
 ## 1. Task Origin
 
-- **Chat**: If a task is given in the chat, create a new TODO file in `.ai-agent/todos/<YYYYMMDD>/<YYYYMMDD>-todo-<number>.md`. The content of the file should be the user's request.
+- **Chat**: If a task (ie. almost any work to do) is asked/given in the chat (except the user is indicating an existing TODO file), create a new TODO file in `.ai-agent/todos/<YYYYMMDD>/<YYYYMMDD>-todo-<number>.md`. The content of the file should be the user's request.
 - **TODO File**: The primary source of tasks is the `.ai-agent/todos` directory, which contains TODO files that need to be processed, organized by date and numbered sequentially.
 
 ## 2. Task Selection
