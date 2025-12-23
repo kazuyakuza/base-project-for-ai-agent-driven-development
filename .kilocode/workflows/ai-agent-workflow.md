@@ -2,7 +2,10 @@
 
 ## 1. Task Reception
 
-- **Orchestrator Agent**: Receives the initial task from the user.
+- **Orchestrator Agent**:
+  - Receives the initial task from the user.
+  - Orchestrates the workflow by assigning sub-tasks to the appropriate agents.
+  - The sub-tasks must be defined clearly, including clear details of the overall workflow to follow.
 
 ## 2. Analysis and Planning
 
@@ -14,7 +17,7 @@
   - Creates a detailed, step-by-step plan.
   - Refines the plan in tiny steps.
   - Review the plan for any necessary changes.
-  - **File Storage**: the plan must be saved to a file in `.kilocode/_generated/plans/` with a unique name (e.g., `<datetime>-<plan-name>.md`) in almost all cases. So, the Coder Agent must receive this file to work on.
+  - **File Storage**: the plan must be saved to a file in `.kilocode/_generated/plans/` (<< REMEMBER THIS PATH) with a unique name (e.g., `<datetime>-<plan-name>.md`) in almost all cases. So, the Coder Agent must receive this file to work on.
 
 ## 3. User Interaction
 
