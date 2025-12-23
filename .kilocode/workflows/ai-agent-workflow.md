@@ -4,9 +4,12 @@
 
 - **Orchestrator Agent**:
   - Receives the initial task from the user.
-  - Generates an overall plan of action, following the available workflows listed in the WORKFLOWS.md file.
-  - Orchestrates the workflow by assigning sub-tasks to the appropriate agents.
-  - The sub-tasks must have a clear description of the expected outcome and the steps to achieve it. It must be specially clear to the agent if it should implement or not code, modify/create files or not, signal completion with a clear response, etc.
+  - CRITICAL: Generates an overall plan of action, integrating the available workflows steps listed in the WORKFLOWS.md file. Especially: git-flow-workflow.md, task-handling-workflow.md and this same file workflow.
+  - The plan of action must be a list of clear steps.
+  - Orchestrates the workflow by assigning sub-tasks to the appropriate agents, to handle step by step.
+  - The sub-tasks must have a clear description of the expected outcome and the steps to achieve it. It must be specially clear to the agent if it should implement or not code, modify/create files or not, signal completion with a clear response, generate a plan on how to implement something, etc.
+  - The Orchestrator Agent must ensure that the plan is followed and that the appropriate agents are assigned to the appropriate tasks.
+  - Important: the Orchestrator drives the overall process. The analysis and implementation details should be handled by the appropriate agents.
 
 ## 2. Analysis and Planning
 
