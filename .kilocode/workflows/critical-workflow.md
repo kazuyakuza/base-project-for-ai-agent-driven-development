@@ -57,22 +57,32 @@ Orchestrator Agent must also handle this step:
 - For each item:
   - Ask the user for clarifications or to confirm implementation plans if necessary.
   - Adhere to all other defined rules and workflows (e.g., creating unit tests for new features).
-- **Analysis and Planning**
-  - This must be handled by the Architect Agent for each item.
-  - Identifies ambiguities and areas needing user clarification.
-  - Researches required technologies, frameworks, or APIs.
-  - Analyzes the current project status.
-  - Defines a high-level approach for the solution/implementation, creating a step-by-step plan. Include git handling, code writing, running console cmds (when required), test build (if exists), code review, testing implementation (if set-up in the project), documentation updates, etc.
-  - IMPORTANT: Redefines the plan in tiny and detailed steps, including clear files names, structure, code snippets, and any other relevant details.
-  - Review the plan for any necessary changes.
-  - **File Storage**: the plan must be saved to a file in `.kilocode/_generated/plans/` with a unique name (e.g., `<datetime>-<plan-name>.md`) in almost all cases. So, the Coder Agent (or any other) can receive this file to work on.
-  - The plan must be presented to the user for approval before proceeding with the next steps.
-  - Although the Architect Agent is responsible for creating the plan, the Orchestrator Agent is responsible for ensuring that the plan is followed and that the appropriate agents are assigned to the appropriate tasks.
-  - Always check the details of the original task before proceeding with the next steps.
-  - In general process should be: the Orchestrator creates a step to generate the plan in a sub-task, that must respond with the plan file path. Then, the Orchestrator Agent can assign the Coder Agent to implement the plan in another sub-task.
+  - **Analysis and Planning**
+    - This must be handled by the Architect Agent.
+    - Identifies ambiguities and areas needing user clarification.
+    - Researches required technologies, frameworks, or APIs.
+    - Analyzes the current project status.
+    - Defines a high-level approach for the solution/implementation, creating a step-by-step plan including:
+      - git handling (check section 5. Implementation)
+      - code writing (check section 5. Implementation)
+      - running console cmds (when required)
+      - test build (if exists)
+      - code review
+      - testing implementation (if set-up in the project)
+      - documentation updates
+      - mark the item inside the TODO file as DONE (check section 6. Item Completion)
+      - etc.
+    - IMPORTANT: Redefines the plan in tiny and detailed steps, including clear files names, structure, code snippets, and any other relevant details.
+    - Review the plan for any necessary changes.
+    - **File Storage**: the plan must be saved to a file in `.kilocode/_generated/plans/` with a unique name (e.g., `<datetime>-<plan-name>.md`) in almost all cases. So, the Coder Agent (or any other) can receive this file to work on.
+    - The plan must be presented to the user for approval before proceeding with the next steps.
+    - Although the Architect Agent is responsible for creating the plan, the Orchestrator Agent is responsible for ensuring that the plan is followed and that the appropriate agents are assigned to the appropriate tasks.
+    - Always check the details of the original task before proceeding with the next steps.
+    - General process must be: the Orchestrator creates a step to generate the plan in a sub-task, that must respond with the plan file path. Then, the Orchestrator Agent can assign the Coder Agent to implement the plan in another sub-task.
 
 ## 5. Implementation
 
+- This step must be defined per each TODO file item. This is described in the "4. Task Execution" section.
 - **Coder Agent**:
   - Receives and implements individual extremely tiny and detailed steps from the plan.
   - Always check the details of the original task before proceeding with the next steps.
@@ -87,6 +97,7 @@ Orchestrator Agent must also handle this step:
 
 ## 6. Item Completion
 
+- This step must be defined per each TODO file item. This is described in the "4. Task Execution" section.
 - When the Implementation of a plan item is completed, the item in the TODO file must be clearly marked as done.
 - Mark the item as done in the TODO file:
   - **Line Item**: Add `[DONE]` at the beginning of the line.
