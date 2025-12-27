@@ -18,3 +18,4 @@ This file contains the rules that all AI agents must follow. Each rule is define
 - [Workflow Review Rule](../.kilocode/rules/workflow-review-rule.md)
 - [Markdown Generation Rule](../.kilocode/rules/markdown-generation-rule.md)
 - [Important Paths Rule](../.kilocode/rules/important-paths.md)
+- [Newline Prevention Rule](../.kilocode/rules/newline-prevention.md)
