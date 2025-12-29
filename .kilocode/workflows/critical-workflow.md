@@ -111,18 +111,18 @@ Must include next steps:
 
 ### 4.5. Item Completion
 
-- When the Implementation of a plan's item is completed, the item in the TODO file must be clearly marked as done.
+- When the Implementation of a plan's item is completed, the item in the TODO file must be clearly marked as done, details below.
 - Mark the item as done in the TODO file:
   - **Line Item Format**: Add `[DONE]` at the beginning of the line.
   - **Section Item Format**: Add `[DONE]` to the section title.
   - **Other Format**: Add `[DONE]` to the appropriate section or line as needed.
-  **Take care to don't delete the content of the file**
+  **Take care to don't delete the content of the file, or change its original content, except for the addition of the `[DONE]` mark**
 - IMPORTANT: Commit all changes to the current branch with a meaningful message.
 
 ## 5. TODO File Completion
 
 - When all items in a TODO file are resolved (ie. marked as done as indicates the step 6), rename the file with a `-DONE` suffix (e.g., `<YYYYMMDD>-todo-<number>-DONE.md`), and commit it.
-  **Take care to don't delete the file**
+  **Take care to don't delete the file, or changes its content. Only rename it**
 - Merge the current feature branch into the master branch:
   - IMPORTANT: Ensure all files are committed in feature branch. If not, stage them and commit them before continue.
   - Switch to the `main` branch, which is the master branch.
