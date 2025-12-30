@@ -41,17 +41,18 @@ Must include next steps:
   - If not in the main branch, and:
     - there are uncommitted changes, commit them. Then ask the user if merge that branch to `main` branch or not.
     - there are not pending changes, then ask the user if merge that branch to `main` branch or not.
-- 3º Create and switch to a new branch with a descriptive name:
+- 3º Create a new branch with a descriptive name:
   - For new features: `feat/<meaning-name>`
   - For bug fixes: `fix/<meaning-name>`
   - Create the new branch before starting work on the task, ensuring the branch name reflects the task's purpose or TODO file's name.
   - All work must be done in the feature branch. The feature branch will be merged to the `main` branch later.
-- 4º Add the TODO file/s and/or plan file/s staged in step 1º of this section, if any.
+- 4º Switch to the new branch created in step 3º of this section.
+- 5º Add the TODO file/s and/or plan file/s staged in step 1º of this section, if any. Then commit it before continue.
 
 ## 3. Version Update
 
 - If the project has a version number (e.g., in `package.json`), increment it following the `x.y.z` format.
-- Commit this change.
+- Commit this change before continue.
 
 ## 4. Task Execution
 
@@ -80,7 +81,7 @@ Must include next steps:
   - testing implementation (if set-up in the project)
   - documentation updates (check steps below)
   - mark the item inside the TODO file as DONE (check steps below)
-  - etc.
+  - and any other relevant details
 - IMPORTANT: After the high-level approach, redefines the plan in very tiny and very detailed steps, including clear files names/paths, structure, code snippets, where/how run terminal cmds, and any other relevant details.
 - Review the plan for any necessary changes.
 - CRITICAL **File Storage**: the plan must be saved to a file in `.kilocode/_generated/plans/` with a unique name (e.g., `<datetime>-<plan-name>.md`) in almost all cases. So, the Coder Agent (or any other) can receive this file to work on.
@@ -130,7 +131,7 @@ Must include next steps:
   - Recheck the feature branch was correctly merged into `main` branch.
     - If it was correctly merged, then delete the feature branch. It is IMPORTANT to verify BEFORE deleting the feature branch.
     - If the feature branch was not correctly merged into the `main` branch, then ask the user to resolve the merge conflicts and then retry the merge process.
-  - If an `origin` remote repository exists, then push the latest `main` branch commits to the remote repository.
+  - Check if an `origin` remote repository is configured, then push the latest `main` branch commits to the remote repository if it is configured.
 
 ## 6. Continuation
 

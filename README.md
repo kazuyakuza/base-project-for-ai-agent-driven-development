@@ -1,64 +1,85 @@
 # Base Project for AI Agent Driven Development
 
-**Attention AI Agents:** Before making any changes, you **must** read and adhere to the guidelines outlined in the `AGENTS.md` file. This file contains critical information about the project's workflow, rules, and architectural standards.
+This project serves as a foundational template for future AI-agent driven development. It is pre-configured with essential rules, workflows, and structures optimized for collaboration between human developers and AI agents (specifically Kilo Code).
+
+**Attention AI Agents:** Before making any changes, you **must** read and adhere to the guidelines outlined in [`AGENTS.md`](AGENTS.md:1). This file contains critical information about the project's workflow, rules, and architectural standards.
 
 ## About this Project
 
-I created this project to construct my personal AI agent-driven base workflow, then use it as start point for other projects.
-It may work with any AI model and tool. However I'm testing it ONLY with Kilo Code plugin for VSCode.
+The primary goal of this repository is to provide a clean, structured starting point for new projects with built-in "AI-Readiness."
 
-I recommend you to ask the AI agent to review the workflow and give you details about "what is does".
+### Core Requirements
 
-## About the Workflow
+- **Foundation**: A structured baseline for new repositories.
+- **AI-Readiness**: Integrated configurations to enable immediate and effective AI agent participation.
+- **Standardization**: Established coding standards, workflows, and documentation practices.
+- **Memory Bank**: A persistent context and knowledge management system for agents.
 
-The base idea of the workflow is to create a structured and efficient process for AI agents to follow when working on projects. It ensures that all tasks are completed systematically, from analysis and planning to implementation, code review, and documentation, alongside with git version control.
+## Project Structure
 
-With this workflow you can just ask the ai agent to work on whatever you want, and then let it work. The usual configuration of the agent is to let it does "whatever" it want, so you can give it a task and return when it finish.
+Understanding the purpose of the configuration directories is key to effective development:
 
-## What to Expect
+- [`.ai-agent/`](.ai-agent/): Stores project-specific agent context. Includes the [`.ai-agent/todos/`](.ai-agent/todos/) directory for task tracking, local rules, and the [`project-structure.md`](.ai-agent/project-structure.md:1) map.
+- [`.kilocode/`](.kilocode/): The operational core of the AI integration. Contains global [`.kilocode/rules/`](.kilocode/rules/), standardized [`.kilocode/workflows/`](.kilocode/workflows/), and the [`.kilocode/_generated/plans/`](.kilocode/_generated/plans/) directory where agents store detailed implementation plans.
 
-Clearly, this is not magic. Don't think to just give work to the AI Agent and expect a result without errors, problems and/or top quality implementations.
+## The Critical Workflow
 
-That depends on the models you will use, the requirements you are asking for, and how you write down yours requests.
-The workflow is just a structured process to try to prevent the AI agent to broke all. Its a guardrails to restrict the AI agent to follow the steps that should improve the final result.
+The project follows a standardized process for task execution, ensuring systematic progress from analysis to deployment.
 
-## Prerequisites
+```mermaid
+graph TD
+    Start((Start)) --> Origin{Task Origin}
+    Origin -- Chat --> CreateTodo[Create TODO file]
+    Origin -- TODO File --> ReadTodo[Read next TODO item]
+    CreateTodo --> GitSetup[Git Feature Branch Setup]
+    ReadTodo --> GitSetup
+    GitSetup --> VersionUpdate[Version Update]
+    VersionUpdate --> Execution[Task Execution Loop]
+    subgraph ExecutionProcess [4. Task Execution]
+        Execution --> Analysis[4.1 Analysis & Planning]
+        Analysis --> Implementation[4.2 Implementation]
+        Implementation --> CodeReview[4.3 Code Review]
+        CodeReview --> Documentation[4.4 Documentation]
+        Documentation --> ItemCompletion[4.5 Item Completion]
+    end
+    ItemCompletion -- More Items --> Execution
+    ItemCompletion -- All Items Done --> TodoCompletion[5. TODO File Completion]
+    TodoCompletion --> Continuation{Continuation}
+    Continuation -- More Files --> ReadTodo
+    Continuation -- Finished --> End((End))
+```
 
-- Kilo Code has multiple configurations, and one of them is the option to use multiple AI agents types. The defined workflow force the ai agent to use them. If you are not using Kilo Code, or have not set up the different agents, you may need to adapt the workflow to your specific needs and tools.
-- Memory Bank is another Kilo Code feature that is being used in the project. Not in the main workflow itself, it has his own workflow. However, this memory bank should improve the ai agent behaviour. Lear more about it in the Kilo Code documentation.
-- The main workflow includes the execution of specific git cmds. You may read the file [How To Set Up Git](docs/how-to-set-up-git.md).
+For full details, see [`critical-workflow.md`](.kilocode/workflows/critical-workflow.md:1).
 
-## How to Use This Project
+## How to Start a Task
 
-There are 2 options: one is directly ask the work in the chat, and the other is to use a TODO file.
+To initiate work with an AI agent, use one of the following copy-paste friendly commands in the chat.
 
-### Using a TODO File (Recommended)
+### Option 1: Using a TODO File (Recommended)
 
-1- **Create a TODO File**: Create a new file named `<YYYYMMDD>-todo-<number>.md` in the `todos` directory. Replace `<YYYYMMDD>` with the current date and `<number>` with a unique identifier.
-
-2- **Define Tasks**: List all the tasks you need to complete in the TODO file. Use clear and concise language to describe each task.
-
-3- **Ask AI to Work with it**: Write down next text in the kilo code chat box:
+1. Create a new file named `YYYYMMDD-todo-X.md` in [`.ai-agent/todos/`](.ai-agent/todos/).
+2. Paste the following into the chat:
 
 ```text
-follow @/.kilocode/workflows/critical-workflow.md and full read @/AGENTS.md 
+follow @/.kilocode/workflows/critical-workflow.md and full read @/AGENTS.md
 do: @/.ai-agent/todos/<YYYYMMDD>/<YYYYMMDD>-todo-<number>.md
 ```
 
-Note: replace the `<YYYYMMDD>` with the current date and `<number>` with a unique identifier.
+### Option 2: Direct Chat Request
 
-### Directly Asking the Workflow in the Chat
+If you have a quick request, use this template:
 
-1- **Ask for Changes**: Directly ask the AI agent for the changes you need in the chat. Write down next text in the kilo code chat box:
-  
-  ```text
-  follow @/.kilocode/workflows/critical-workflow.md and full read @/AGENTS.md 
-  do: your specific task or request here
-  ```
+```text
+follow @/.kilocode/workflows/critical-workflow.md and full read @/AGENTS.md
+do: [Your specific task or request here]
+```
 
-2- **TODO File Creation**: following the workflow, the AI agent will create a new TODO file in the `todos` directory with your specific task or request.
+## Prerequisites
 
-## Workflow Changes
+- **Kilo Code**: Optimized for the Kilo Code plugin for VSCode.
+- **Memory Bank**: Utilizes the Memory Bank feature of Kilo Code for persistent context. Read the Kilo Code documentation at its official page.
+- **Git**: Ensure your environment is configured for the workflow. See [`how-to-set-up-git.md`](docs/how-to-set-up-git.md:1).
 
-I will keep updating the workflow while I'm using it, to fix potential problems I may see.
-I will also add some features after the fundamental roots of the workflow goes smoothly and without many errors.
+---
+
+*Note: This workflow is actively maintained and updated to improve stability and introduce new features.*
