@@ -31,23 +31,22 @@ The workflow steps organize the task/work receiving, the understanding and analy
 
 Orchestrator Agent must include in the plan it generates this section.
 It must clear for the designated ai agent to where and how to run the commands of this section.
-Must include next steps:
+Its important to understand that `main` branch is the master branch of the repo.
+The plan must include next steps:
 
 - 1º Run `git status`:
-  - If TODO file/s and/or plan file/s from the **1. Task Origin** step are unstaged, stash them, in order to merge them later in the new branch to create in the step 3º below, from this same section. CAUTION: don't remove the files, they have the work definition!
+  - If there are unstaged files then commit all of them with a meaningfully comment.
 - 2º Switch to the `main` branch:
-  - Its important to understand that `main` branch is the master branch of the repo.
-  - If already in the main branch, and there are uncommitted changes, ask the user what to do with them.
-  - If not in the main branch, and:
-    - there are uncommitted changes, commit them. Then ask the user if merge that branch to `main` branch or not.
-    - there are not pending changes, then ask the user if merge that branch to `main` branch or not.
+  - If already in the `main` branch, then continue with step 3.
+  - If not in the `main` branch, ask the user if merge that branch to `main` branch or not.
+    - If yes, then merge it to `main` branch, then checkout `main` branch and remote the merged branch.
+    - If no, then checkout `main` branch.
 - 3º Create a new branch with a descriptive name:
   - For new features: `feat/<meaning-name>`
   - For bug fixes: `fix/<meaning-name>`
   - Create the new branch before starting work on the task, ensuring the branch name reflects the task's purpose or TODO file's name.
   - All work must be done in the feature branch. The feature branch will be merged to the `main` branch later.
 - 4º Switch to the new branch created in step 3º of this section.
-- 5º Add the TODO file/s and/or plan file/s staged in step 1º of this section, if any. Then commit it before continue.
 
 ## 3. Version Update
 
@@ -114,7 +113,8 @@ Must include next steps:
 ### 4.5. Item Completion
 
 - This step is RELEVANT to show the details of the item completion process.
-- When the Implementation of a plan's item is completed, the item in the TODO file MUST be clearly marked as done, details below.
+- It's important to understand that this MUST be executed just after the item is completed, and not when all items are completed.
+- When the Implementation of a plan's item is completed, the item in the TODO file MUST be clearly marked as done. More details below.
 - Mark the item as done in the TODO file:
   - **Line Item Format**: Add `[DONE]` at the beginning of the line.
   - **Section Item Format**: Add `[DONE]` to the section title.
