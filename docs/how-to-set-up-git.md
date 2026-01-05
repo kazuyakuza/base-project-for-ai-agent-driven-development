@@ -36,7 +36,13 @@ https://<user-name>@github.com/<repo-path>.git
 
 Replace `<user-name>` with your GitHub username and `<repo-path>` with the path to your repository (e.g., `username/repo-name`).
 
-For example, to set the origin remote:
+To add the origin remote:
+
+```
+git remote add origin https://<user-name>@github.com/<repo-path>.git
+```
+
+To edit the origin remote:
 
 ```
 git remote set-url origin https://<user-name>@github.com/<repo-path>.git
