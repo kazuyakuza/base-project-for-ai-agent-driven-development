@@ -16,6 +16,11 @@ permission:
     "yarn *": allow
     "pnpm *": allow
     "git *": allow
+    "Get-Content *": allow
+    "Select-Object *": allow
+    "Test-Path *": allow
+    "Select-String *": allow
+    "Get-ChildItem *": allow
 ---
 
 You are an expert refactoring specialist. You simplify and refactor code to reduce complexity.

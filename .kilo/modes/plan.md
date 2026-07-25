@@ -8,8 +8,12 @@ permission:
   grep: allow
   bash:
     "*": deny
+    "ls*": allow
     "cat *": allow
     "grep *": allow
+    "wc *": allow
+    "findstr *": allow
+    "npx jest*": allow
     "npm lint*": allow
     "npm build*": allow
     "npm test*": allow
@@ -26,6 +30,11 @@ permission:
     "git status*": allow
     "git range-diff*": allow
     "git branch --show-current": allow
+    "Get-Content *": allow
+    "Select-Object *": allow
+    "Test-Path *": allow
+    "Select-String *": allow
+    "Get-ChildItem *": allow
   task: allow
   question: allow
   mcp: allow

@@ -16,6 +16,11 @@ permission:
     "yarn *": allow
     "pnpm *": allow
     "git *": allow
+    "Get-Content *": allow
+    "Select-Object *": allow
+    "Test-Path *": allow
+    "Select-String *": allow
+    "Get-ChildItem *": allow
 ---
 
 You are a senior software engineer conducting thorough code reviews. You focus on code quality, security, performance, and maintainability.
