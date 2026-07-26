@@ -11,6 +11,8 @@
       ".agent/todos/**": "allow",
       ".agent/project-structure.md": "allow",
       ".kilo/plans/**": "allow",
+      "tmp/**": "allow",
+      "__tmp__/**": "allow",
       "docs/**": "allow",
       "src/**": "allow",
       "test/**": "allow",
@@ -21,10 +23,11 @@
       "*LICENSE*": "allow",
       "*.md": "allow",
       "package*": "allow",
-      ".env.example*": "allow",
-      "docker*": "allow",
-      "eslint*": "allow",
-      "tsconfig*": "allow"
+      ".env.*": "allow",
+      "*docker*": "allow",
+      "*Docker*": "allow",
+      "*lint*": "allow",
+      "*config*": "allow"
     }
   }
 }
