@@ -23,3 +23,4 @@ List of rules all AI agents must follow.
 - [Git Remote Safety](../.kilo/rules/git-remote-safety.md)
 - [Gitignore Compliance](../.kilo/rules/gitignore-compliance.md)
 - [Tool Selection Priority](../.kilo/rules/tool-selection-priority.md)
+- [Overwrite TODO File Prevention](../.kilo/rules/overwrite-todo-file-prevention.md)
