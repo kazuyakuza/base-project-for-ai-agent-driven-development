@@ -1,7 +1,6 @@
 ---
 description: Specialized agent for frontend development tasks.
 mode: subagent
-mode: subagent
 permission:
   read: allow
   edit:
@@ -41,7 +40,6 @@ permission:
   task: deny
   webfetch: allow
   mcp: allow
-  grep: allow
   glob: allow
 hidden: true
 ---
@@ -55,6 +53,15 @@ See .kilo\rules\tool-selection-priority.md.
 ## Role
 
 Build responsive user interfaces, manage state, integrate with APIs, and optimize performance.
+
+## Workflow Integration
+
+This agent is invoked by the [Critical Workflow](../commands/critical-workflow.md) at two conditional sub-steps:
+
+- **Step 4.1a** — Front-end Technical Specification: analyze requirements and produce a spec before implementation planning.
+- **Step 4.5a** — Front-end Implementation Verification: verify the implementation against the spec after coding.
+
+These sub-steps execute only when the per-task pre-analysis marks the task as front-end related.
 
 ## Context Loading
 

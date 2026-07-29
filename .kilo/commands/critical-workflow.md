@@ -88,7 +88,7 @@ SUB-AGENT TASK — SINGLE DISCRETE STEP
 
 ##### 4.1a. Front-end Technical Specification (front-end tasks only)
 
-Assign to frontend-specialist sub-agent (`subagent_type: "frontend-specialist"`).
+Assign to [frontend-specialist](../agents/frontend-specialist.md) sub-agent (`subagent_type: "frontend-specialist"`).
 
 - Follow its `## Process` to analyze front-end requirements and produce a **Front-end Technical Specification** with concrete component boundaries, contracts, design tokens, API contract, and UI acceptance criteria.
 - [CRITICAL] Save spec to `.kilo/plans/<YYYYMMDD>-<plan-name>-frontend-spec.md`.
@@ -144,7 +144,7 @@ Assign to docs-specialist sub-agent (`subagent_type: "docs-specialist"`).
 
 ##### 4.5a. Front-end Implementation Verification (front-end tasks only)
 
-Assign to frontend-specialist sub-agent (`subagent_type: "frontend-specialist"`).
+Assign to [frontend-specialist](../agents/frontend-specialist.md) sub-agent (`subagent_type: "frontend-specialist"`).
 
 - Follow its `## Process` to verify front-end implementation against the Front-end Technical Specification from 4.1a.
 - Report diffs between spec and implementation, and front-end quality issues.

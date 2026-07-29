@@ -50,14 +50,20 @@ graph TD
     GitSetup --> VersionUpdate["3. Version Update<br/><small>[Implementer]</small>"]
     VersionUpdate --> Execution[Task Execution Loop]
     subgraph ExecutionProcess [4. Task Execution]
-        Execution --> Analysis["4.1 Analysis & Planning<br/><small>[Architector]</small>"]
-        Analysis --> Implementation["4.2 Implementation<br/><small>[Implementer]</small>"]
-        Implementation --> CodeReview["4.3 Code Review<br/><small>[Code Reviewer]</small>"]
+        Execution --> FECheck1{Front-end task?}
+        FECheck1 -- Yes --> FESpec["4.1a Front-end Spec<br/><small>[Frontend Specialist]</small>"]
+        FECheck1 -- No --> ImplPlan
+        FESpec --> ImplPlan["4.1b Implementation Plan<br/><small>[Architector]</small>"]
+        ImplPlan --> Implementation["4.2 Implementation<br/><small>[Implementer]</small>"]
+        Implementation --> CodeReview["4.3 Code Review<br/><small>[Code Reviewer & Simplifier]</small>"]
         CodeReview -- Fixes Needed --> Fixes["4.3-fix Apply Fixes<br/><small>[Implementer]</small>"]
         Fixes -- Re-review --> CodeReview
         CodeReview -- Approved --> Documentation["4.4 Documentation<br/><small>[Docs Specialist]</small>"]
-        Documentation --> Check["4.5 Verification<br/><small>[Implementer]</small>"]
-        Check --> TaskCompletion["4.6 Task Completion<br/><small>[Implementer]</small>"]
+        Documentation --> FECheck2{Front-end task?}
+        FECheck2 -- Yes --> FEVerify["4.5a Front-end Verify<br/><small>[Frontend Specialist]</small>"]
+        FECheck2 -- No --> OverallCheck
+        FEVerify --> OverallCheck["4.5b Overall Adherence<br/><small>[Architector]</small>"]
+        OverallCheck --> TaskCompletion["4.6 Task Completion<br/><small>[Implementer]</small>"]
     end
     TaskCompletion -- More Items --> Execution
     TaskCompletion -- All Items Done --> TodoCompletion["5. TODO File Completion<br/><small>[Implementer]</small>"]
@@ -98,7 +104,7 @@ do [Your specific task or request here]
 
 ## AI Agent Plans
 
-The critical workflow requires the AI to generate detailed implementation plans for each task. The [Architector sub-agent](.kilo/agents/architector.md) handles analysis and planning (step 4.1), while the [Implementer sub-agent](.kilo/agents/implementer.md) executes the plan (step 4.2). A [Code Reviewer](.kilo/agents/code-reviewer.md) validates quality, and a [Docs Specialist](.kilo/agents/docs-specialist.md) maintains documentation.
+The critical workflow requires the AI to generate detailed implementation plans for each task. The [Architector sub-agent](.kilo/agents/architector.md) handles analysis and planning (step 4.1b), while the [Implementer sub-agent](.kilo/agents/implementer.md) executes the plan (step 4.2). A [Code Reviewer](.kilo/agents/code-reviewer.md) and [Code Simplifier](.kilo/agents/code-simplifier.md) validate quality, a [Docs Specialist](.kilo/agents/docs-specialist.md) maintains documentation, and a [Frontend Specialist](.kilo/agents/frontend-specialist.md) produces front-end specs (4.1a) and verifies front-end implementations (4.5a) for front-end related tasks.
 
 The AI agent will ask for your approval before proceeding with plans. To skip approval prompts, include in the TODO file or chat request:
 
