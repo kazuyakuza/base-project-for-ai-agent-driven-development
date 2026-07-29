@@ -90,8 +90,7 @@ SUB-AGENT TASK — SINGLE DISCRETE STEP
 
 Assign to frontend-specialist sub-agent (`subagent_type: "frontend-specialist"`).
 
-- Analyze front-end requirements: framework(s)/version, component structure, contracts (props/states/events), routing, styling architecture, design tokens, responsive behavior, API integration, accessibility (a11y), and performance budgets.
-- Produce a **Front-end Technical Specification** with concrete component boundaries, contracts, design tokens, API contract, and UI acceptance criteria.
+- Follow its `## Process` to analyze front-end requirements and produce a **Front-end Technical Specification** with concrete component boundaries, contracts, design tokens, API contract, and UI acceptance criteria.
 - [CRITICAL] Save spec to `.kilo/plans/<YYYYMMDD>-<plan-name>-frontend-spec.md`.
 - Return the spec path to the Plan Agent.
 
@@ -100,6 +99,7 @@ Assign to frontend-specialist sub-agent (`subagent_type: "frontend-specialist"`)
 Assign to architector sub-agent (`subagent_type: "architector"`).
 
 - For front-end tasks: read the front-end spec produced in 4.1a and use it as front-end input for the plan.
+- The Plan Agent MUST pass the front-end spec file path in the task prompt context so architector can read it.
 - Identify task ambiguities; analyze project status; research required techs, frameworks, libs, dependencies, and/or APIs installed/used or new to add/use.
 - Generate implementation plan:
   1. Think high-level approach to implement the TODO task, including steps for: git handling, code writing, console cmds (if required), test build (if exists), code review, unit test (if testing suite exists), docs updates, etc.
@@ -146,13 +146,7 @@ Assign to docs-specialist sub-agent (`subagent_type: "docs-specialist"`).
 
 Assign to frontend-specialist sub-agent (`subagent_type: "frontend-specialist"`).
 
-- Verify front-end implementation against the Front-end Technical Specification from 4.1a:
-  - Component structure and contracts (props/states/events) match the spec.
-  - CSS/styling architecture and design tokens applied correctly.
-  - Responsive behavior and layout correctness.
-  - Accessibility (a11y) requirements met.
-  - State management and API integration behave as specified.
-  - Build/typecheck/lint pass for front-end code (run allowed npm/npx read-only commands).
+- Follow its `## Process` to verify front-end implementation against the Front-end Technical Specification from 4.1a.
 - Report diffs between spec and implementation, and front-end quality issues.
 
 ##### 4.5b. Overall Plan Adherence
@@ -160,6 +154,7 @@ Assign to frontend-specialist sub-agent (`subagent_type: "frontend-specialist"`)
 Assign to architector sub-agent (`subagent_type: "architector"`).
 
 - For front-end tasks: incorporate the front-end verification report from 4.5a.
+- The Plan Agent MUST pass the front-end verification report in the task prompt context so architector can incorporate it.
 - Check implementation plan adherence.
 - Report found diffs, if any.
 - Report if deviations from the original plan are acceptable. If not, propose changes in a new TODO file.

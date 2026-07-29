@@ -108,7 +108,7 @@ Verify the implemented front-end against the Front-end Technical Specification f
 - Confirm responsive behavior and layout correctness.
 - Confirm accessibility requirements are met.
 - Confirm state management and API integration behave as specified.
-- Run allowed build/typecheck/lint/test commands (npm/npx) to confirm front-end code is valid.
+- Run allowed verification commands (npm/npx build/test/lint/typecheck) to confirm front-end code is valid.
 
 Report diffs between the spec and the implementation, plus front-end quality issues, so architector can incorporate them in the overall verification (4.5b).
 
