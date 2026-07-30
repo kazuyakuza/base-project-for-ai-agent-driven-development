@@ -25,13 +25,17 @@ It is **EXTREMELY IMPORTANT** that all AI agents follow this workflow step by st
   - **Other Formats**: Ask user for clarification.
 - **Plan Agent**:
   1. Receives requests, creates/reads TODO file.
-  2. Generates a global plan file for steps 2–6 where **each TODO task gets its own 4.1–4.6 cycle**; do not question this and add 4.x cycle per task. Include a global and per task pre-analysis, including specially technical & architecture decisions. Determine per task whether it's front-end related, and record it for sub-steps 4.1a & 4.5a.
+  2. Global Plan:
+      - Generates a global plan file for steps 2–6 where **each TODO task gets its own 4.1–4.6 cycle**; do not question this and add 4.x cycle per task.
+      - Include a global and per task pre-analysis, including specially technical & architecture decisions.
+      - Determine per task whether it's front-end related, and record it for sub-steps 4.1a & 4.5a.
+      - If some tasks are extremely short/related, you may join them in a single step.
   3. **DO NOT call `plan_exit`**. Don't reason about this, never question this. Instead just:
       - auto-approve global plan **ONLY** if request or TODO file includes string: "Don't request me to approve plans".
       - otherwise you **MUST** present the global plan to the user using the `question` tool, including global plan file path and options:
         - "Approve Global and Tasks Plans": execute 4.1 step per task, but auto-approve the per task plan.
         - "Approve Global Plan": execute 4.1 step per task, and present user per task plan for approval.
-  4. After approval, delegates steps to sub-agents via `task` tool, including all relevant context (TODO path, task description, plan path, constraints, etc) in each prompt.
+  4. **After approval**, delegates steps to sub-agents via `task` tool, including all relevant context (TODO path, task description, plan path, constraints, etc) in each prompt. IMPORTANT: before start processing global plan, verify if the user approved it.
 - **Ask Agent**: Handles user communication; called by Plan Agent via `task` tool.
 
 ### 2. Git Feature Branch Setup
@@ -63,6 +67,7 @@ Assigns to implementer sub-agent (`subagent_type: "implementer"`).
 
 - **CRITICAL**: Each step (4.1–4.6) MUST be a separate `task` tool invocation. Do NOT assign the entire global plan or all 4.x steps for a task to a single sub-agent.
 - Process TODO tasks in file order. Before a new task, commit pending changes.
+- The global plan must never be overwritten.
 - On failures: pause and ask user intervention.
 - **Context Passing**: on delegating via `task` tool, include all relevant context: TODO file path, task description, per task plan path, constraints, global/task pre-analysis, etc. in the prompt. Sub-agents MUST read project context files independently.
 
