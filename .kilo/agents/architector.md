@@ -6,7 +6,6 @@ permission:
   edit:
     "*": deny
     "*.md": allow
-  grep: allow
   bash:
     "*": deny
     "ls*": allow
