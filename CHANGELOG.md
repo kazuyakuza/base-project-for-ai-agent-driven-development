@@ -2,6 +2,36 @@
 
 All notable changes to the AI Agent Driven Development base project will be documented in this file.
 
+## 2026-07-29
+
+### Changes
+
+#### Critical Workflow: Frontend Specialist Integration
+
+- **Conditional front-end sub-steps `4.1a` and `4.5a`**: For front-end related tasks, the Critical Workflow now invokes `frontend-specialist` before `architector`.
+  - `4.1a` — Front-end Technical Specification: `frontend-specialist` analyzes framework/version, component structure, contracts, styling architecture, responsive behavior, API integration, accessibility (a11y), and performance budgets; produces a spec saved to `.kilo/plans/<YYYYMMDD>-<plan-name>-frontend-spec.md`.
+  - `4.1b` — Implementation Plan: `architector` consumes the front-end spec and produces the complete implementation plan.
+  - `4.5a` — Front-end Verification: `frontend-specialist` verifies the implementation against the spec, reporting diffs and quality issues.
+  - `4.5b` — Overall Plan Adherence: `architector` incorporates the front-end verification report and checks overall plan adherence.
+- **Non-front-end tasks unchanged**: Single `architector` assignment in `4.1` and `4.5` remains the default.
+- **Plan Agent pre-analysis**: Global plan now determines per task whether it is front-end related (UI, components, templates, styling, layout, responsiveness, front-end state, UI API consumption, or front-end framework files).
+
+#### Agent Definition: frontend-specialist.md
+
+- **Added `## Context Loading`, `## Process`, and `## Boundaries` sections**: Defines how the agent analyzes front-end tasks, produces technical specifications, and verifies implementations. Agent is bounded to specification and verification only; no application code writing or state-modifying git commands.
+- **Added `## Workflow Integration` section**: Cross-references the Critical Workflow conditional steps.
+- **Fixed duplicate YAML keys**: Removed duplicate `mode: subagent` and `grep: allow` entries.
+
+#### Review & Simplification Fixes
+
+- **Removed duplicated checklists**: Front-end analysis and verification criteria now live only in `frontend-specialist.md`; `critical-workflow.md` references them instead of repeating.
+- **Clarified command wording**: Changed "run allowed build/typecheck/lint/test commands" to "run allowed verification commands" in `frontend-specialist.md`.
+- **Explicit context passing**: Added notes that the Plan Agent must pass the front-end spec path and verification report to `architector` in steps `4.1b` and `4.5b`.
+
+#### Documentation
+
+- **Updated `README.md`**: Mermaid diagram now shows front-end conditional decision paths (`Front-end task?` → `4.1a` → `4.1b` and `4.5a` → `4.5b`).
+
 ## 2026-06-11 to 2026-07-11
 
 ### Changes
