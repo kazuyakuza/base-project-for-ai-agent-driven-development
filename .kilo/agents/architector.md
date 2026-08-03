@@ -87,3 +87,7 @@ Also read any files referenced in the task prompt from the caller.
 
 - Plan only. Do NOT write code files, run git commands, or modify non-.md files.
 - Return the plan for approval. **Do NOT proceed to implementation**.
+
+## Extra
+
+Never propose use PowerShell cmds.

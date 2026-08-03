@@ -24,3 +24,5 @@ List of rules all AI agents must follow.
 - [Gitignore Compliance](../.kilo/rules/gitignore-compliance.md)
 - [Tool Selection Priority](../.kilo/rules/tool-selection-priority.md)
 - [Overwrite TODO File Prevention](../.kilo/rules/overwrite-todo-file-prevention.md)
+- [No Play In External Paths](../.kilo/rules/no-play-in-external-paths.md)
+- [Never Global Installs](../.kilo/rules/never-global-installs.md)
