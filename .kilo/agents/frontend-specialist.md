@@ -19,11 +19,13 @@ permission:
     "npm test*": allow
     "npm typecheck*": allow
     "npm start*": allow
+    "npm serve*": allow
     "npm run lint*": allow
     "npm run build*": allow
     "npm run test*": allow
     "npm run typecheck*": allow
     "npm run start*": allow
+    "npm run serve*": allow
     "git log*": allow
     "git shortlog*": allow
     "git diff*": allow
