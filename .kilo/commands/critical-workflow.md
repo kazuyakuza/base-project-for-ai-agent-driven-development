@@ -186,9 +186,10 @@ Plan Agent assigns implementer sub-agent (`subagent_type: "implementer"`).
       - On failure: notify user.
 - If `origin` remote is set, push `main` to `origin` ONLY. **Do NOT push to other remotes** (e.g., `base-project`, `upstream`, `template`) unless explicitly instructed. Notify user if push to `origin` fails.
 
-### 6. Continuation
+### 6. Finish
 
-Write down next text for the user to proceed with next undone TODO file in a new chat with
+- Provide a short resume of the realized work.
+- Provide below text so user may proceed with next undone TODO file in new chat
 
 ```text
 full read @AGENTS.md & follow /critical-workflow

@@ -24,6 +24,7 @@
       "*.md": "allow",
       "package*": "allow",
       ".env.*": "allow",
+      "*angular*": "allow",
       "*docker*": "allow",
       "*Docker*": "allow",
       "*lint*": "allow",

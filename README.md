@@ -67,11 +67,6 @@ graph TD
     end
     TaskCompletion -- More Items --> Execution
     TaskCompletion -- All Items Done --> TodoCompletion["5. TODO File Completion<br/><small>[Implementer]</small>"]
-    TodoCompletion --> Continuation{6. Continuation: more TODO files?}
-    Continuation -- Yes --> Ask{Ask User to Proceed}
-    Continuation -- No --> End((End))
-    Ask -- Yes --> GitSetup
-    Ask -- No --> End
 ```
 
 For full details, see [`critical-workflow.md`](.kilo/commands/critical-workflow.md).
