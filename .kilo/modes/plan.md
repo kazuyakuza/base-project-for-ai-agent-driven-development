@@ -26,6 +26,7 @@ permission:
     "npm run typecheck*": allow
     "npm run start*": allow
     "npm run serve*": allow
+    "git -C * log*": allow
     "git log*": allow
     "git shortlog*": allow
     "git diff*": allow
