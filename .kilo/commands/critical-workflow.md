@@ -178,6 +178,7 @@ Assign to implementer sub-agent (`subagent_type: "implementer"`).
 Plan Agent assigns implementer sub-agent (`subagent_type: "implementer"`).
 
 - Rename TODO file with `-DONE` suffix (e.g., `<YYYYMMDD>-todo-<number>-DONE.md`). **Don't delete the file or change its content.**
+- Review and remove any tmp file/folder created in the process.
 - Ensure all files are committed in feature branch.
 - Merge feature branch:
   1. Switch to `main` branch.
