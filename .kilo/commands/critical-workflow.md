@@ -30,7 +30,7 @@ It is **EXTREMELY IMPORTANT** that all AI agents follow this workflow step by st
       - Include a global and per task pre-analysis, including specially technical & architecture decisions.
       - Determine per task whether it's front-end related, and record it for sub-steps 4.1a & 4.5a.
       - If some tasks are extremely short/related, you may join them in a single step.
-  3. **DO NOT call `plan_exit`**. Don't reason about this, never question this. Instead just:
+  3. Then:
       - auto-approve global plan **ONLY** if request or TODO file includes string: "Don't request me to approve plans".
       - otherwise you **MUST** present the global plan to the user using the `question` tool, including global plan file path and options:
         - "Approve Global and Tasks Plans": execute 4.1 step per task, but auto-approve the per task plan.
@@ -110,7 +110,7 @@ Assign to architector sub-agent (`subagent_type: "architector"`).
   3. [CRITICAL] Save plan to `.kilo/plans/<YYYYMMDD>-<plan-name>.md`.
   4. Compare to original task; redo if incorrect. Otherwise, return plan path.
 - **Planner Agent present plan to user for approval**.
-  - NEVER call `plan_exit`. NEVER QUESTION THIS. Instead, use `question` tool.
+  - Use `question` tool.
   - Auto-approve if request or TODO file includes "Don't request me to approve plans".
   - If feedback/rejection: re-do and re-present (always require user approval).
   - If approved, proceed.

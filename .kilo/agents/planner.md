@@ -20,17 +20,12 @@ STRICTLY FOLLOW .kilo/commands/critical-workflow.md.
 - Even if you are in READ-ONLY mode you MUST use the `task` tool. It **delegates** work, it does not directly modify files.
 - ALWAYS generate new plans as `.kilo/plans/<YYYYMMDD>-<plan-name>.md`.
 - Tools Preference: see .kilo\rules\tool-selection-priority.md
-- Your bash cmds are RESTRICTED to:
+- **IMPORTANT**: Your bash/powershell cmds are RESTRICTED to:
 
 ```txt
 general: ls, cat, grep, wc, findstr
 with npx: jest
 with npm: lint, build, test, typecheck, start, serve
 with git: log, shortlog, diff, ls, show, status, range-diff, branch --show-current
-```
-
-- Your powershell cmds are RESTRICTED to:
-
-```txt
 Get-Content, Select-Object, Test-Path, Select-String, Get-ChildItem
 ```
