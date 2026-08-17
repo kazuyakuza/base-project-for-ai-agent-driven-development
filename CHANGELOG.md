@@ -2,6 +2,16 @@
 
 All notable changes to the AI Agent Driven Development base project will be documented in this file.
 
+## 2026-08-17
+
+### Changes
+
+#### Replaces Plan Agent with Planner Agent
+
+- Drop the use of the kilo-code/open-code native plan agent: it generates many permissions errors.
+- Generates new planner agent with the same rol as the plan agent.
+- Planner agent permissions: when the task tool is used in the kilo-code plugin, "some" of the permissions are inherited from the caller agent. Then, to able to respect sub-agent permissions, the planner agent has nearly all allow permissions.
+
 ## 2026-07-29
 
 ### Changes

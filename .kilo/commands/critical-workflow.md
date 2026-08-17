@@ -1,6 +1,6 @@
 ---
 description: Critical workflow for task execution with full process management
-agent: plan
+agent: planner
 ---
 # CRITICAL WORKFLOW
 
@@ -23,7 +23,7 @@ It is **EXTREMELY IMPORTANT** that all AI agents follow this workflow step by st
     - Sub-items under a task heading belong to that task and do **not** spawn new tasks.
     - If no pattern matches, ask the user for clarification.
   - **Other Formats**: Ask user for clarification.
-- **Plan Agent**:
+- **Planner Agent**:
   1. Receives requests, creates/reads TODO file.
   2. Global Plan:
       - Generates a global plan file for steps 2–6 where **each TODO task gets its own 4.1–4.6 cycle**; do not question this and add 4.x cycle per task.
@@ -36,7 +36,6 @@ It is **EXTREMELY IMPORTANT** that all AI agents follow this workflow step by st
         - "Approve Global and Tasks Plans": execute 4.1 step per task, but auto-approve the per task plan.
         - "Approve Global Plan": execute 4.1 step per task, and present user per task plan for approval.
   4. **After approval**, delegates steps to sub-agents via `task` tool, including all relevant context (TODO path, task description, plan path, constraints, etc) in each prompt. IMPORTANT: before start processing global plan, verify if the user approved it.
-- **Ask Agent**: Handles user communication; called by Plan Agent via `task` tool.
 
 ### 2. Git Feature Branch Setup
 
@@ -97,20 +96,20 @@ Assign to frontend-specialist sub-agent (`subagent_type: "frontend-specialist"`)
 
 - Follow sub-agent defined `Process` to analyze task requirements and produce a **Front-end Technical Specification**.
 - [CRITICAL] Save spec to `.kilo/plans/<YYYYMMDD>-<plan-name>-frontend-spec.md`.
-- Return the spec path to the Plan Agent.
+- Return the spec path to the Planner Agent.
 
 ##### 4.1b. Implementation Plan
 
 Assign to architector sub-agent (`subagent_type: "architector"`).
 
-- For front-end tasks: read the front-end spec produced in 4.1a (Plan Agent MUST pass the file path) and use it as front-end input for the plan.
+- For front-end tasks: read the front-end spec produced in 4.1a (Planner Agent MUST pass the file path) and use it as front-end input for the plan.
 - Identify task ambiguities; analyze project status; research required techs, frameworks, libs, dependencies, and/or APIs installed/used or new to add/use.
 - Generate implementation plan:
   1. Think high-level approach to implement the TODO task, including steps for: git handling, code writing, console cmds (if required), test build (if exists), code review, unit test (if testing suite exists), docs updates, etc.
   2. Use the high-level approach to define an extensive and complete implementation plan, composed by very tiny and very detailed steps; include clear file names/paths, structure, code snippets, terminal cmd details, technical & architecture decisions, etc.
   3. [CRITICAL] Save plan to `.kilo/plans/<YYYYMMDD>-<plan-name>.md`.
   4. Compare to original task; redo if incorrect. Otherwise, return plan path.
-- **Plan Agent present plan to user for approval**.
+- **Planner Agent present plan to user for approval**.
   - NEVER call `plan_exit`. NEVER QUESTION THIS. Instead, use `question` tool.
   - Auto-approve if request or TODO file includes "Don't request me to approve plans".
   - If feedback/rejection: re-do and re-present (always require user approval).
@@ -131,7 +130,7 @@ Assign concurrently to code-reviewer sub-agent (`subagent_type: "code-reviewer"`
 - For code-reviewer: review for errors/deviations from the implementation plan.
 - For code-simplifier: review sources to simplify code where possible or makes sense.
 - Both generates a fix/simplification plan; [CRITICAL] save in `.kilo/plans/<YYYYMMDD>-<plan-name>.md`.
-- Plan Agent review and then assigns both fix & simplification plans to implementer sub-agent (`subagent_type: "implementer"`) in a new sub-task.
+- Planner Agent review and then assigns both fix & simplification plans to implementer sub-agent (`subagent_type: "implementer"`) in a new sub-task.
 - Max 3 review cycles; escalate to user.
 
 #### 4.4. Documentation
@@ -157,7 +156,7 @@ Assign to frontend-specialist sub-agent (`subagent_type: "frontend-specialist"`)
 
 Assign to architector sub-agent (`subagent_type: "architector"`).
 
-- For front-end tasks: incorporate the front-end verification report (Plan Agent MUST pass the report) from 4.5a.
+- For front-end tasks: incorporate the front-end verification report (Planner Agent MUST pass the report) from 4.5a.
 - Check implementation plan adherence.
 - Report found diffs, if any.
 - Report if deviations from the original plan are acceptable. If not, propose changes in a new TODO file.
@@ -175,7 +174,7 @@ Assign to implementer sub-agent (`subagent_type: "implementer"`).
 
 ### 5. TODO File Completion
 
-Plan Agent assigns implementer sub-agent (`subagent_type: "implementer"`).
+Assigns to implementer sub-agent (`subagent_type: "implementer"`).
 
 - Rename TODO file with `-DONE` suffix (e.g., `<YYYYMMDD>-todo-<number>-DONE.md`). **Don't delete the file or change its content.**
 - Review and remove any tmp file/folder created in the process.
@@ -233,4 +232,4 @@ Each entry is a separate `task` tool invocation with the appropriate `subagent_t
 
 - On errors: log details, commit safe changes if possible, notify user, and pause.
 - If endless loops or repeated failures occur, escalate to user immediately.
-- If a sub-step (4.1–4.6) fails verification (e.g., no completion signal or non-compliance), Plan Agent reassigns the sub-task or escalates to user.
+- If a sub-step (4.1–4.6) fails verification (e.g., no completion signal or non-compliance), Planner Agent reassigns the sub-task or escalates to user.

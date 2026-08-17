@@ -1,6 +1,6 @@
 ---
 description: Project structure maintenance workflow
-agent: plan
+agent: planner
 ---
 # Project Structure Maintenance Workflow
 

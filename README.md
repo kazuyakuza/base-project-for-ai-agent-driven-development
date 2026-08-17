@@ -6,8 +6,11 @@ This project serves as a foundational template for future AI-agent driven develo
 
 ## Compatibility
 
-This template was implemented and tested with the **Kilo Code VSCode plugin**. It should also work with:
+This template was implemented and tested with the **Kilo Code VSCode plugin**.
+Last Kilo Code tested version: **7.4.22**.
+This project should also work with:
 
+- Kilo Code previous versions
 - **Kilo Code CLI** (command-line interface)
 - Any AI agent manager or similar tool that supports custom sub-agent definitions, rule files, and workflow commands via markdown-based configuration
 

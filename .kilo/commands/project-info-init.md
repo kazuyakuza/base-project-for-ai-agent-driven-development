@@ -1,6 +1,6 @@
 ---
 description: Project info initialization workflow for new projects
-agent: plan
+agent: planner
 ---
 # Project Info Initialization Workflow
 
