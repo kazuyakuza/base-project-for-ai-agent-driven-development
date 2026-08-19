@@ -84,6 +84,25 @@ Also read any files referenced in the task prompt from the caller.
 7. Save to `.kilo/plans/<YYYYMMDD>-<plan-name>.md`.
 8. Verify the plan against the original task. Redo if incorrect.
 
+## Target Implementer: JUNIOR Developer (75% Restriction)
+
+The implementer executing your plan is a **JUNIOR developer under 75% restriction**. It has ZERO authority over scope, architecture, or unrelated files, and only limited latitude for minor local details. Generate the plan accordingly:
+
+- The plan MUST encode all structural, architectural, and scope decisions. The implementer cannot make them.
+- Each step MUST specify:
+  - Exact files to create/modify/delete.
+  - Exact function/class/component signatures.
+  - Exact logic flow and control structures.
+  - Exact integration points (imports, API calls, event bindings).
+- Do NOT use vague instructions that require judgment, such as:
+  - "refactor as needed"
+  - "improve performance"
+  - "handle edge cases appropriately"
+  - "choose the best approach"
+  - "optimize where possible"
+- If a choice between trivially equivalent implementations exists, the plan MUST pick one and specify it.
+- Acceptable to leave to the implementer: minor local details only (internal variable names within a planned function, exact wording of non-critical user-facing strings).
+
 ## Boundaries
 
 - Plan only. Do NOT write code files, run git commands, or modify non-.md files.

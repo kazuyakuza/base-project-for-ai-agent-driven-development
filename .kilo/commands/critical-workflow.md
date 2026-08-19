@@ -107,8 +107,9 @@ Assign to architector sub-agent (`subagent_type: "architector"`).
 - Generate implementation plan:
   1. Think high-level approach to implement the TODO task, including steps for: git handling, code writing, console cmds (if required), test build (if exists), code review, unit test (if testing suite exists), docs updates, etc.
   2. Use the high-level approach to define an extensive and complete implementation plan, composed by very tiny and very detailed steps; include clear file names/paths, structure, code snippets, terminal cmd details, technical & architecture decisions, etc.
-  3. [CRITICAL] Save plan to `.kilo/plans/<YYYYMMDD>-<plan-name>.md`.
-  4. Compare to original task; redo if incorrect. Otherwise, return plan path.
+  3. The plan must be generated for a **JUNIOR developer under 75% restriction**. All structural, architectural, and scope decisions MUST be encoded in the plan. Vague or judgment-requiring instructions are prohibited. If a choice between approaches exists, the plan must pick one. Only minor local details may be left to the implementer.
+  4. [CRITICAL] Save plan to `.kilo/plans/<YYYYMMDD>-<plan-name>.md`.
+  5. Compare to original task; redo if incorrect. Otherwise, return plan path.
 - **Planner Agent present plan to user for approval**.
   - Use `question` tool.
   - Auto-approve if request or TODO file includes "Don't request me to approve plans".
@@ -119,9 +120,10 @@ Assign to architector sub-agent (`subagent_type: "architector"`).
 
 Assign to implementer sub-agent (`subagent_type: "implementer"`).
 
+- The implementer is a **JUNIOR developer under 75% restriction**. It may handle minor local details (e.g., local variable names) but is HARD BLOCKED from: modifying unrelated files, expanding scope, making architectural decisions, skipping steps, or choosing between unspecified approaches.
 - MUST follow steps from the implementation plan generated in step 4.1; check plan between steps.
 - IMPORTANT: commit w/meaningful messages.
-- Must don't take self actions/decisions. Only follow implementation plan.
+- If the plan is ambiguous about structure, scope, or architecture, the implementer will STOP and ask the caller for clarification. Do NOT guess.
 
 #### 4.3. Code Review & Simplification
 
