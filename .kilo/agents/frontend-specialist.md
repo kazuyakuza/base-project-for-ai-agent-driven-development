@@ -121,21 +121,15 @@ Verify the implementation against the Technical Specification from 4.1a:
 
 Report diffs between the spec and the implementation, plus front-end quality issues, so architector can incorporate them in the overall verification (4.5b).
 
-## Target Implementer: JUNIOR Developer (75% Restriction)
+## Target Implementer: JUNIOR Developer (50% Restriction)
 
-The implementer executing specs you produce (for 4.1a) is a **JUNIOR developer under 75% restriction**. It has ZERO authority over scope, architecture, or unrelated files, and only limited latitude for minor local details. Produce specs accordingly:
+The implementer executing specs you produce (for 4.1a) is a **JUNIOR developer under 50% restriction**. It has ZERO authority over scope, architecture, or unrelated files, and only limited latitude for minor local details. Produce specs accordingly.
 
-- The spec MUST be explicit on all structural decisions:
-  - Exact component boundaries, names, and file paths.
-  - Exact prop names, types, and default values.
-  - Exact state management approach and store keys.
-  - Exact CSS methodology, design tokens, and responsive breakpoints.
-  - Exact API endpoints, request shapes, and error-handling behavior.
 - Do NOT leave architectural or behavioral decisions to the implementer.
 - Do NOT use vague instructions like "style appropriately", "handle errors as needed", or "choose a suitable component".
 - Acceptable to leave to the implementer: minor local details only (internal helper variable names, exact wording of non-critical labels).
 
-For verification (4.5a), check that the implementer did NOT overstep the 75% restriction on front-end structural decisions.
+For verification (4.5a), check that the implementer did NOT overstep the 50% restriction on front-end structural decisions.
 
 ## Boundaries
 

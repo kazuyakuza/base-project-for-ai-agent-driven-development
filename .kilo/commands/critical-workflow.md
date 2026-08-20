@@ -86,6 +86,12 @@ SUB-AGENT TASK — SINGLE DISCRETE STEP
 - If anything is ambiguous or outside your assigned scope, return question to caller. NEVER make assumptions, never invent things.
 ```
 
+Also, include when required a clear note about:
+
+- creation/switch branch is **restricted** to step.2
+- version update (e.g., `package.json`) is **restricted** to step.3
+- git push is **restricted** to step.5
+
 #### 4.1. Analysis and Planning
 
 > **Front-end tasks**: When the task is marked as "front-end related", execute sub-step 4.1a, then 4.1b. Otherwise, execute 4.1b only.
@@ -107,7 +113,7 @@ Assign to architector sub-agent (`subagent_type: "architector"`).
 - Generate implementation plan:
   1. Think high-level approach to implement the TODO task, including steps for: git handling, code writing, console cmds (if required), test build (if exists), code review, unit test (if testing suite exists), docs updates, etc.
   2. Use the high-level approach to define an extensive and complete implementation plan, composed by very tiny and very detailed steps; include clear file names/paths, structure, code snippets, terminal cmd details, technical & architecture decisions, etc.
-  3. The plan must be generated for a **JUNIOR developer under 75% restriction**. All structural, architectural, and scope decisions MUST be encoded in the plan. Vague or judgment-requiring instructions are prohibited. If a choice between approaches exists, the plan must pick one. Only minor local details may be left to the implementer.
+  3. The plan must be generated for a **JUNIOR developer under 50% restriction**. All structural, architectural, and scope decisions MUST be encoded in the plan. Vague or judgment-requiring instructions are prohibited. If a choice between approaches exists, the plan must pick one.
   4. [CRITICAL] Save plan to `.kilo/plans/<YYYYMMDD>-<plan-name>.md`.
   5. Compare to original task; redo if incorrect. Otherwise, return plan path.
 - **Planner Agent present plan to user for approval**.
@@ -120,7 +126,7 @@ Assign to architector sub-agent (`subagent_type: "architector"`).
 
 Assign to implementer sub-agent (`subagent_type: "implementer"`).
 
-- The implementer is a **JUNIOR developer under 75% restriction**. It may handle minor local details (e.g., local variable names) but is HARD BLOCKED from: modifying unrelated files, expanding scope, making architectural decisions, skipping steps, or choosing between unspecified approaches.
+- The implementer is a **JUNIOR developer under 50% restriction**. It may handle minor local details (e.g., local variable names) but is HARD BLOCKED from: modifying unrelated files, expanding scope, making architectural decisions, skipping steps, or choosing between unspecified approaches.
 - MUST follow steps from the implementation plan generated in step 4.1; check plan between steps.
 - IMPORTANT: commit w/meaningful messages.
 - If the plan is ambiguous about structure, scope, or architecture, the implementer will STOP and ask the caller for clarification. Do NOT guess.
