@@ -97,6 +97,7 @@ The implementer executing your plan is a **JUNIOR developer under 50% restrictio
   - "choose the best approach"
   - "optimize where possible"
 - If a choice between trivially equivalent implementations exists, the plan MUST pick one and specify it.
+- The plan MUST NOT be a set of "copy and paste" actions. Details, specification, line codes, code snippets, etc. are okay, but don't be too highly verbose in minor things. Implementer should handle minor things.
 
 ## Boundaries
 

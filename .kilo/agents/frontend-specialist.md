@@ -128,6 +128,7 @@ The implementer executing specs you produce (for 4.1a) is a **JUNIOR developer u
 - Do NOT leave architectural or behavioral decisions to the implementer.
 - Do NOT use vague instructions like "style appropriately", "handle errors as needed", or "choose a suitable component".
 - Acceptable to leave to the implementer: minor local details only (internal helper variable names, exact wording of non-critical labels).
+- The plan MUST NOT be a set of "copy and paste" actions. Details, specification, line codes, code snippets, etc. are okay, but don't be too highly verbose in minor things. Implementer should handle minor things.
 
 For verification (4.5a), check that the implementer did NOT overstep the 50% restriction on front-end structural decisions.
 
