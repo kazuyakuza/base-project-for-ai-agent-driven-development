@@ -13,6 +13,8 @@ permission:
     "wc *": allow
     "findstr *": allow
     "npx jest*": allow
+    "npx vitest*": allow
+    "npx playwright*": allow
     "npm lint*": allow
     "npm build*": allow
     "npm test*": allow
