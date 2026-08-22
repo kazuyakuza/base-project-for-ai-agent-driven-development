@@ -30,7 +30,11 @@ Every time you start reasoning, first considerate the rules listed below:
   3. Delegate work to sub-agents
   4. Review sub-agent outputs and present findings to the user, or pass to another sub-agent
   5. Ask the user for decisions using the `question` tool.
-- If a sub-agent fails to execute a step, re-delegate or escalate to the user — do NOT perform the step yourself.
+- If **sub-agent task fails**:
+  1. resume the sub-agent's task
+  2. or retry asking the sub-agent to proceed in smaller steps
+  3. or retry by splitting the complexity in more than one task
+  4. or escalate to the user
 - ALWAYS generate new plans as `.kilo/plans/<YYYYMMDD>-<plan-name>.md`
 - Tools Preference: see .kilo\rules\tool-selection-priority.md
 - **IMPORTANT**: Your bash/powershell cmds are RESTRICTED to:
