@@ -69,6 +69,7 @@ Assigns to implementer sub-agent (`subagent_type: "implementer"`).
 - The global plan must never be overwritten.
 - On failures: pause and ask user intervention.
 - **Context Passing**: on delegating via `task` tool, include all relevant context: TODO file path, task description, per task plan path, constraints, global/task pre-analysis, etc. in the prompt. Sub-agents MUST read project context files independently.
+- **On sub-agent empty response or error**: resume the task asking the sub-agent to continue the process, and always provide a response.
 
 #### Sub-Task Prompt Requirements
 
@@ -82,7 +83,7 @@ SUB-AGENT TASK — SINGLE DISCRETE STEP
 - Do NOT read or expand scope to the plan for other tasks.
 - Tools preference: .kilo/rules/tool-selection-priority.md.
 - Follow ../.kilo/rules/gitignore-compliance.md.
-- Signal completion with a clear summary: what was done, what was NOT done.
+- Signal completion with a clear summary: what was done, what was NOT done. Otherwise, caller agent MUST resume task requesting it.
 - If anything is ambiguous or outside your assigned scope, return question to caller. NEVER make assumptions, never invent things.
 ```
 
@@ -102,7 +103,7 @@ Assign to frontend-specialist sub-agent (`subagent_type: "frontend-specialist"`)
 
 - Follow sub-agent defined `Process` to analyze task requirements and produce a **Front-end Technical Specification**.
 - [CRITICAL] Save spec to `.kilo/plans/<YYYYMMDD>-<plan-name>-frontend-spec.md`.
-- Return the spec path to the Planner Agent.
+- Return the spec path to the Planner Agent. Otherwise, Planner Agent MUST resume task and request it.
 
 ##### 4.1b. Implementation Plan
 
@@ -115,7 +116,8 @@ Assign to architector sub-agent (`subagent_type: "architector"`).
   2. Use the high-level approach to define an extensive and complete implementation plan, composed by very tiny and very detailed steps; include clear file names/paths, structure, code snippets, terminal cmd details, technical & architecture decisions, etc.
   3. The plan must be generated for a **JUNIOR developer under 50% restriction**. All structural, architectural, and scope decisions MUST be encoded in the plan. Vague or judgment-requiring instructions are prohibited. If a choice between approaches exists, the plan must pick one.
   4. [CRITICAL] Save plan to `.kilo/plans/<YYYYMMDD>-<plan-name>.md`.
-  5. Compare to original task; redo if incorrect. Otherwise, return plan path.
+  5. Compare to original task; redo if incorrect.
+  6. Return the plan path to the Planner Agent. Otherwise, Planner Agent MUST resume task and request it.
 - **Planner Agent present plan to user for approval**.
   - Use `question` tool.
   - Auto-approve if request or TODO file includes "Don't request me to approve plans".
@@ -130,6 +132,7 @@ Assign to implementer sub-agent (`subagent_type: "implementer"`).
 - MUST follow steps from the implementation plan generated in step 4.1; check plan between steps.
 - IMPORTANT: commit w/meaningful messages.
 - If the plan is ambiguous about structure, scope, or architecture, the implementer will STOP and ask the caller for clarification. Do NOT guess.
+- Return a clear summary: what was done, what was NOT done. Otherwise, Planner agent MUST resume task requesting it.
 
 #### 4.3. Code Review & Simplification
 
@@ -137,7 +140,8 @@ Assign concurrently to code-reviewer sub-agent (`subagent_type: "code-reviewer"`
 
 - For code-reviewer: review for errors/deviations from the implementation plan.
 - For code-simplifier: review sources to simplify code where possible or makes sense.
-- Both generates a fix/simplification plan; [CRITICAL] save in `.kilo/plans/<YYYYMMDD>-<plan-name>.md`.
+- Both generates a fix/simplification plan if required; [CRITICAL] save in `.kilo/plans/<YYYYMMDD>-<plan-name>.md`.
+- Both returns file path to the Planner Agent, or clear msg if not required. Otherwise, Planner Agent MUST resume task and request it.
 - Planner Agent review and then assigns both fix & simplification plans to implementer sub-agent (`subagent_type: "implementer"`) in a new sub-task.
 - Max 3 review cycles; escalate to user.
 
@@ -148,6 +152,7 @@ Assign to docs-specialist sub-agent (`subagent_type: "docs-specialist"`).
 - Add comments in code's files (e.g. JSDoc, JavaDoc, etc.). Include details to guide AI agents, links to related documentation and/or example files.
 - Update/create project documentation (e.g. README, `/docs`). Add TOC/Index when doc file > 100 lines. Split documentation into files, don't put everything in README root.
 - Include guides and real examples for AI Agents that will use and/or work on the current implementations.
+- Return a clear summary: what was done, what was NOT done. Otherwise, Planner agent MUST resume task requesting it.
 
 #### 4.5. Verification
 
@@ -158,7 +163,8 @@ Assign to docs-specialist sub-agent (`subagent_type: "docs-specialist"`).
 Assign to frontend-specialist sub-agent (`subagent_type: "frontend-specialist"`).
 
 - Follow sub-agent defined `Process` to verify implementation against the specs file from 4.1a.
-- Report diffs between spec and implementation, and front-end quality issues.
+- Generates report file with diffs between spec and implementation, and front-end quality issues; including steps to fix them.
+- Returns file path to the Planner Agent, or clear msg if not required. Otherwise, Planner Agent MUST resume task and request it.
 
 ##### 4.5b. Overall Plan Adherence
 
@@ -166,8 +172,8 @@ Assign to architector sub-agent (`subagent_type: "architector"`).
 
 - For front-end tasks: incorporate the front-end verification report (Planner Agent MUST pass the report) from 4.5a.
 - Check implementation plan adherence.
-- Report found diffs, if any.
-- Report if deviations from the original plan are acceptable. If not, propose changes in a new TODO file.
+- Report found diffs (if any), and if deviations from the original plan are acceptable. If not, propose changes in a new plan file.
+- Returns file path to the Planner Agent, or clear msg if not required. Otherwise, Planner Agent MUST resume task and request it.
 
 #### 4.6. Task Completion
 
