@@ -139,7 +139,7 @@ Assign to implementer sub-agent (`subagent_type: "implementer"`).
 Assign concurrently to code-reviewer sub-agent (`subagent_type: "code-reviewer"`) and code-simplifier sub-agent (`subagent_type: "code-simplifier"`).
 
 - For code-reviewer: review for errors/deviations from the implementation plan.
-- For code-simplifier: review sources to simplify code where possible or makes sense.
+- For code-simplifier: review sources to simplify code where possible or makes sense. If simplification is too extensive, then move it to a new TODO file; otherwise simplification plan is not optional.
 - Both generates a fix/simplification plan if required; [CRITICAL] save in `.kilo/plans/<YYYYMMDD>-<plan-name>.md`.
 - Both returns file path to the Planner Agent, or clear msg if not required. Otherwise, Planner Agent MUST resume task and request it.
 - Planner Agent review and then assigns both fix & simplification plans to implementer sub-agent (`subagent_type: "implementer"`) in a new sub-task.
