@@ -1,0 +1,40 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "default_agent": "planner",
+  "instructions": [
+    ".kilo/rules/*.md"
+  ],
+  "plugin": [
+    "opencode-ignore@1.1.0"
+  ],
+  "permission": {
+    "edit": {
+      "*": "ask",
+      ".agent/project-info/**": "allow",
+      ".agent/todos/**": "allow",
+      ".agent/project-structure.md": "allow",
+      ".kilo/plans/**": "allow",
+      "tmp/**": "allow",
+      "__tmp__/**": "allow",
+      "docs/**": "allow",
+      "src/**": "allow",
+      "test/**": "allow",
+      "__test__/**": "allow",
+      "tests/**": "allow",
+      "__tests__/**": "allow",
+      "e2e/**": "allow",
+      "__e2e__/**": "allow",
+      "test-results/**": "allow",
+      "*ignore*": "allow",
+      "*LICENSE*": "allow",
+      "*.md": "allow",
+      "package*": "allow",
+      ".env.*": "allow",
+      "*angular*": "allow",
+      "*docker*": "allow",
+      "*Docker*": "allow",
+      "*lint*": "allow",
+      "*config*": "allow"
+    }
+  }
+}

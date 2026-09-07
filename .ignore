@@ -1,0 +1,100 @@
+# .ignore — block list for the `opencode-ignore` plugin (like Kilo Code's .kilocodeignore)
+# The plugin blocks read/write/edit/glob/grep/list on files matching these patterns.
+# opencode's grep/glob tools also respect this file natively (ripgrep).
+# KEEP IN SYNC WITH .kilocodeignore (the Kilo Code equivalent).
+
+# Lock files - not useful for semantic code search
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+bun.lock
+bun.lockb
+Cargo.lock
+Gemfile.lock
+poetry.lock
+composer.lock
+Pipfile.lock
+mix.lock
+pubspec.lock
+Podfile.lock
+buildscript-gradle.lockfile
+gradle.lockfile
+
+# Dependency directories
+node_modules/
+vendor/
+packages/
+
+# Build and output directories
+dist/
+build/
+out/
+target/
+.next/
+.nuxt/
+coverage/
+.cache/
+__pycache__/
+*.pyc
+
+# Binary and generated files
+*.min.js
+*.min.css
+*.map
+*.chunk.js
+*.bundle.js
+*.bundle.css
+
+# Large data files
+*.csv
+*.tsv
+*.parquet
+*.arrow
+*.feather
+*.h5
+*.hdf5
+*.pb
+*.onnx
+*.pth
+*.pt
+*.ckpt
+*.safetensors
+
+# Media and binary assets
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.ico
+*.webp
+*.mp4
+*.mov
+*.avi
+*.webm
+*.mp3
+*.wav
+*.ogg
+*.pdf
+*.zip
+*.tar
+*.gz
+*.bz2
+*.7z
+*.rar
+*.ttf
+*.woff
+*.woff2
+*.eot
+*.otf
+
+# IDE and tool configs
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# Generated documentation
+site/
+_book/
+docs/api/
