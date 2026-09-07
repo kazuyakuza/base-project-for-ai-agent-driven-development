@@ -43,6 +43,7 @@ permission:
     "Get-ChildItem *": allow
   task: deny
   webfetch: allow
+  question: deny
   glob: allow
 ---
 

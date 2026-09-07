@@ -8,6 +8,8 @@ permission:
     "*.md": allow
   grep: allow
   glob: allow
+  task: deny
+  question: deny
   bash:
     "*": deny
     "npm *": allow

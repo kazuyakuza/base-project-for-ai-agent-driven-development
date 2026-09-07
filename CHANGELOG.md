@@ -2,6 +2,34 @@
 
 All notable changes to the AI Agent Driven Development base project will be documented in this file.
 
+## 2026-09-07
+
+### Changes
+
+#### OpenCode Compatibility Support
+
+This template now supports **opencode** in addition to Kilo Code. The Kilo Code setup in `.kilo/` is untouched and fully functional; opencode runs in parallel using the shared rules in `.kilo/rules/`.
+
+- **`opencode.json`** (moved into `.opencode/opencode.json`): `default_agent: planner`, `instructions: [".kilo/rules/*.md"]` (single source of rules — no duplication), and Kilo Code's ask-by-default `edit` guardrails translated to opencode's permission model (last-match-wins ordering).
+- **`.opencode/agents/`**: Added the same 7 agent definitions as `.kilo/agents/` (planner, implementer, architector, code-reviewer, code-simplifier, docs-specialist, frontend-specialist). Frontmatter converted for opencode: `mcp: allow` dropped (not a valid opencode permission key); path references normalized to forward slashes.
+- **`.opencode/commands/`**: Added the 3 workflow commands (critical-workflow, project-info-init, project-structure) as opencode commands, bound to the planner agent.
+- **`tool-selection-priority.md`**: Rewritten to be environment-adaptive — prefer semantic/code-aware MCP tools when available (`vscode-mcp-server_*`, `Bifrost_*`), otherwise fall back to opencode's built-in tools. Safe for both Kilo Code and opencode.
+
+#### .ignore + opencode-ignore plugin (`.kilocodeignore` equivalent)
+
+- **`.ignore`**: New file mirroring `.kilocodeignore` (lock files, dependency dirs, build outputs, minified/map files, large data files, media/binary assets, IDE configs, generated docs). It is the block list for the `opencode-ignore` plugin and is honored natively by opencode's search tools (ripgrep).
+- **Plugin**: `opencode-ignore@1.1.0` registered in `opencode.json` — blocks `read`/`edit`/`write`/`glob`/`grep`/`list` on matched paths (auto-installed from npm on opencode startup). `.env` reads are denied by default by opencode.
+
+#### Sub-Agent Tool Restrictions
+
+- **`task: deny`**: Added to `code-reviewer`, `code-simplifier`, and `docs-specialist` (implementer, architector, and frontend-specialist already had it) in both `.opencode/agents/` and `.kilo/agents/`. Sub-agents can no longer delegate work; the planner retains unrestricted `task` access.
+- **`question: deny`**: Added to all 6 sub-agents in both `.opencode/agents/` and `.kilo/agents/` — questions are returned to the planner (caller) instead of being asked directly, per the Critical Workflow. The planner keeps `question: allow`.
+
+#### Documentation
+
+- **`AGENTS.md`**: Notes the dual-tool setup (Kilo Code `.kilo/` and opencode `.opencode/` + `opencode.json`), shared rules, and opencode's planner default.
+- **`README.md`**: Added opencode to the Compatibility section; documented `.opencode/` and `.ignore`; noted the shared rules approach.
+
 ## 2026-08-19
 
 ### Changes

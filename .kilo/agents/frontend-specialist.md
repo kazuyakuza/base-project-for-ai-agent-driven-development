@@ -44,6 +44,7 @@ permission:
   task: deny
   webfetch: allow
   mcp: allow
+  question: deny
   glob: allow
 ---
 

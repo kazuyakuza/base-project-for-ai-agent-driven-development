@@ -9,6 +9,7 @@ permission:
   grep: allow
   task: deny
   webfetch: allow
+  question: deny
 hidden: true
 ---
 

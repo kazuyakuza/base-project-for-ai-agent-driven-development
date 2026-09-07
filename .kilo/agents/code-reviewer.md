@@ -9,6 +9,8 @@ permission:
   grep: allow
   glob: allow
   mcp: allow
+  task: deny
+  question: deny
   bash:
     "*": deny
     "npm *": allow
