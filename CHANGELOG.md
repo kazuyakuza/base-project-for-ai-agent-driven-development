@@ -2,6 +2,16 @@
 
 All notable changes to the AI Agent Driven Development base project will be documented in this file.
 
+## 2026-09-09
+
+### Changes
+
+#### Documentation
+
+- **`README.md`**: Fixed broken `opencode.json` links (now point to `.opencode/opencode.json`), removed the stale `.kilo/modes/` reference, corrected the rule file count (19 → 22), and clarified that the project-info knowledge files are created during Project Info initialization.
+- **`.agent/project-structure.md`**: Rewritten to reflect the current structure (`.agent/`, `.kilo/`, `.opencode/`, `docs/`).
+- **`.kilo/commands/project-structure.md`** and **`.opencode/commands/project-structure.md`**: Updated the "Other folders" example to reference existing directories instead of the removed `.kilo/modes/`.
+
 ## 2026-09-07
 
 ### Changes

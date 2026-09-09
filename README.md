@@ -12,7 +12,7 @@ This project should also work with:
 
 - Kilo Code previous versions
 - **Kilo Code CLI** (command-line interface)
-- **opencode** — compatible configuration is provided via `opencode.json` and the `.opencode/` directory (agents and commands), sharing the same rules in `.kilo/rules/`
+- **opencode** — compatible configuration is provided via the `.opencode/` directory (agents, commands, and `opencode.json`), sharing the same rules in `.kilo/rules/`
 - Any AI agent manager or similar tool that supports custom sub-agent definitions, rule files, and workflow commands via markdown-based configuration
 
 The project uses standard Markdown-based configuration (`.kilo/`, `.opencode/`, `.agent/`) and does not depend on any proprietary format, making it adaptable to other AI-driven development tools.
@@ -37,10 +37,10 @@ The primary goal of this repository is to provide a clean, structured starting p
 
 Understanding the purpose of the configuration directories is key to effective development:
 
-- [`.agent/`](.agent/): Stores project-specific agent context. Includes [`.agent/project-info/`](.agent/project-info/) for persistent project knowledge (`brief.md`, `product.md`, `context.md`, `architecture.md`, `tech.md`), the [`.agent/todos/`](.agent/todos/) directory for task tracking, local rules, and the [`project-structure.md`](.agent/project-structure.md) map.
-- [`.kilo/`](.kilo/): The operational core of the Kilo Code AI integration. Contains custom [`.kilo/agents/`](.kilo/agents/) (Architector, Implementer, Code Reviewer, Docs Specialist, etc.), global [`.kilo/rules/`](.kilo/rules/) (19 rule files), standardized [`.kilo/commands/`](.kilo/commands/) (workflows like the Critical Workflow), [`.kilo/modes/`](.kilo/modes/) for agent mode overrides, and the [`.kilo/plans/`](.kilo/plans/) directory where agents store detailed implementation plans.
-- [`.opencode/`](.opencode/): The operational core for **opencode** users. Contains [`.opencode/agents/`](.opencode/agents/) and [`.opencode/commands/`](.opencode/commands/) (the same agent/command definitions as `.kilo/`), configured via [`opencode.json`](opencode.json). Rules are shared from `.kilo/rules/` — no duplication.
-- [`.ignore`](.ignore): The opencode equivalent of `.kilocodeignore` — the same patterns (lock files, build outputs, media, etc.). It is the block list for the [`opencode-ignore`](https://github.com/lgladysz/opencode-ignore) plugin (registered in [`opencode.json`](opencode.json)), which blocks `read`/`edit`/`write`/`glob`/`grep`/`list` on matching files, and is also honored natively by opencode's search tools. `.env` reads are denied by default by opencode.
+- [`.agent/`](.agent/): Stores project-specific agent context. Includes [`.agent/project-info/`](.agent/project-info/) for persistent project knowledge, the [`.agent/todos/`](.agent/todos/) directory for task tracking, and the [`project-structure.md`](.agent/project-structure.md) map. The core knowledge files (`brief.md`, `product.md`, `context.md`, `architecture.md`, `tech.md`) plus the behavior guide `instructions.md` live here; the project-specific ones are created during Project Info initialization (see below).
+- [`.kilo/`](.kilo/): The operational core of the Kilo Code AI integration. Contains custom [`.kilo/agents/`](.kilo/agents/) (Planner, Architector, Implementer, Code Reviewer, Code Simplifier, Docs Specialist, Frontend Specialist, etc.), global [`.kilo/rules/`](.kilo/rules/) (22 rule files), standardized [`.kilo/commands/`](.kilo/commands/) (workflows like the Critical Workflow), and the [`.kilo/plans/`](.kilo/plans/) directory where agents store detailed implementation plans.
+- [`.opencode/`](.opencode/): The operational core for **opencode** users. Contains [`.opencode/agents/`](.opencode/agents/) and [`.opencode/commands/`](.opencode/commands/) (the same agent/command definitions as `.kilo/`), configured via [`opencode.json`](.opencode/opencode.json). Rules are shared from `.kilo/rules/` — no duplication.
+- [`.ignore`](.ignore): The opencode equivalent of `.kilocodeignore` — the same patterns (lock files, build outputs, media, etc.). It is the block list for the [`opencode-ignore`](https://github.com/lgladysz/opencode-ignore) plugin (registered in [`.opencode/opencode.json`](.opencode/opencode.json)), which blocks `read`/`edit`/`write`/`glob`/`grep`/`list` on matching files, and is also honored natively by opencode's search tools. `.env` reads are denied by default by opencode.
 - [`.kilocodeignore`](.kilocodeignore): Controls which files are excluded from codebase indexing, skipping lock files, dependency directories, build outputs, and binary assets.
 
 ## The Critical Workflow
