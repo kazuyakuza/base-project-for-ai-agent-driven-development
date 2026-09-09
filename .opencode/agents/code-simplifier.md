@@ -8,7 +8,6 @@ permission:
     "*.md": allow
   grep: allow
   glob: allow
-  mcp: allow
   task: deny
   question: deny
   bash:
@@ -42,4 +41,4 @@ The implementer executing your simplification plan is a **JUNIOR developer under
 
 ## Tools Preference
 
-See .kilo\rules\tool-selection-priority.md.
+See .kilo/rules/tool-selection-priority.md.

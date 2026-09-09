@@ -8,7 +8,6 @@ permission:
     "*.md": allow
   grep: allow
   glob: allow
-  mcp: allow
   task: deny
   question: deny
   bash:
@@ -39,4 +38,4 @@ Minor local deviations (internal variable names, string wording) inside planned 
 
 ## Tools Preference
 
-See .kilo\rules\tool-selection-priority.md.
+See .kilo/rules/tool-selection-priority.md.

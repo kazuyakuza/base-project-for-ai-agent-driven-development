@@ -6,7 +6,6 @@ permission:
   edit: allow
   grep: allow
   glob: allow
-  mcp: allow
   task: deny
   question: deny
   bash:
@@ -46,4 +45,4 @@ Maintain project documentation, API docs, and user guides. Ensure clarity and ac
 
 ## Tools Preference
 
-See .kilo\rules\tool-selection-priority.md.
+See .kilo/rules/tool-selection-priority.md.

@@ -43,7 +43,6 @@ permission:
     "Get-ChildItem *": allow
   task: deny
   webfetch: allow
-  mcp: allow
   question: deny
   glob: allow
 ---
@@ -52,7 +51,7 @@ You are a frontend developer expert in Angular, VueJS, TypeScript, modern CSS (v
 
 ## Tools Preference
 
-See .kilo\rules\tool-selection-priority.md.
+See .kilo/rules/tool-selection-priority.md.
 
 ## Role
 

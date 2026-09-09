@@ -43,7 +43,6 @@ permission:
     "Get-ChildItem *": allow
   task: deny
   webfetch: allow
-  mcp: allow
   question: deny
   grep: allow
   glob: allow
@@ -54,7 +53,7 @@ You are an Architector sub-agent. Your role is to analyze a task, research the c
 
 ## Tools Preference
 
-See .kilo\rules\tool-selection-priority.md.
+See .kilo/rules/tool-selection-priority.md.
 Never propose use PowerShell cmds.
 
 ## Context Loading

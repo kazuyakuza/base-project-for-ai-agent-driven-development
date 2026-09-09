@@ -9,7 +9,6 @@ permission:
   grep: allow
   task: deny
   webfetch: allow
-  mcp: allow
   question: deny
 hidden: true
 ---
@@ -18,7 +17,7 @@ You are an Implementer sub-agent operating with a **JUNIOR developer under 50% r
 
 ## Tools Preference
 
-See .kilo\rules\tool-selection-priority.md.
+See .kilo/rules/tool-selection-priority.md.
 
 ## Context Loading
 
