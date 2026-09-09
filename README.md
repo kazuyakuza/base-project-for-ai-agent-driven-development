@@ -13,6 +13,7 @@ This project should also work with:
 - Kilo Code previous versions
 - **Kilo Code CLI** (command-line interface)
 - **opencode** — compatible configuration is provided via the `.opencode/` directory (agents, commands, and `opencode.json`), sharing the same rules in `.kilo/rules/`
+- [**opencode Go**](https://opencode.ai/go?ref=ZHA0GMN860) — the premium opencode subscription this project is developed with
 - Any AI agent manager or similar tool that supports custom sub-agent definitions, rule files, and workflow commands via markdown-based configuration
 
 The project uses standard Markdown-based configuration (`.kilo/`, `.opencode/`, `.agent/`) and does not depend on any proprietary format, making it adaptable to other AI-driven development tools.
@@ -76,6 +77,30 @@ graph TD
 ```
 
 For full details, see [`critical-workflow.md`](.kilo/commands/critical-workflow.md).
+
+## Agent Models
+
+The sub-agents in this project are **model-agnostic**: you can assign a different AI model to each agent in your tool's UI. Using different models per agent produces noticeably better results than running every role on a single model, because each agent can be matched to the strengths its task demands.
+
+A recommended starting point, balancing quality and cost:
+
+- **Reasoning-heavy roles** — [Planner](.kilo/agents/planner.md), [Architector](.kilo/agents/architector.md), [Code Reviewer](.kilo/agents/code-reviewer.md), [Frontend Specialist](.kilo/agents/frontend-specialist.md): use the strongest available model (e.g., a Claude Sonnet/Opus-class model) for analysis, planning, and quality judgment.
+- **Execution roles** — [Implementer](.kilo/agents/implementer.md), [Code Simplifier](.kilo/agents/code-simplifier.md), [Docs Specialist](.kilo/agents/docs-specialist.md): use a fast, capable model (e.g., a Claude Haiku-class model) for the well-defined steps coming from the plan.
+
+The workflow and sub-agent prompts are model-independent, so you can tune each agent's model freely to your preferences and budget.
+
+## Getting Started (New Project Setup)
+
+1. **Write the project brief** — Define the project's core requirements and scope in `.agent/project-info/brief.md`. AI agents rely on it for context across sessions; if it's not defined, agents may produce work that does not align with your goals.
+2. **Set up Git** — Configure Git for the workflow and store your credentials. See [`how-to-set-up-git.md`](docs/how-to-set-up-git.md).
+3. **Initialize project info** — Create a TODO file, or just type it in the chat, asking the planner to read the brief and initialize the project info. In a new chat, run:
+
+```text
+full read @AGENTS.md & follow /critical-workflow
+read @.agent/project-info/brief.md & initialize project info
+```
+
+4. **Work with the planner** — From now on, just ask the planner agent to work through TODO files, or include tasks directly in the chat. See [How to Start a Task](#how-to-start-a-task).
 
 ## How to Start a Task
 

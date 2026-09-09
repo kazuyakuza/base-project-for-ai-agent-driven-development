@@ -12,6 +12,10 @@ All notable changes to the AI Agent Driven Development base project will be docu
 - **`.agent/project-structure.md`**: Rewritten to reflect the current structure (`.agent/`, `.kilo/`, `.opencode/`, `docs/`).
 - **`.kilo/commands/project-structure.md`** and **`.opencode/commands/project-structure.md`**: Updated the "Other folders" example to reference existing directories instead of the removed `.kilo/modes/`.
 
+#### README: Multi-Model Setup, Getting Started and opencode Go
+
+- **`README.md`**: Added an `## Agent Models` section recommending different models per agent (reasoning-heavy roles on the strongest model, execution roles on a fast model) for better results; added a `## Getting Started (New Project Setup)` section describing the startup flow (write the brief → set up Git → ask the planner to read the brief and initialize project info → work via TODO files or chat); added the [opencode Go](https://opencode.ai/go?ref=ZHA0GMN860) subscription to the Compatibility section.
+
 ## 2026-09-07
 
 ### Changes
