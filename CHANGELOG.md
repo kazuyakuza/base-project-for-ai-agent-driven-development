@@ -16,6 +16,16 @@ All notable changes to the AI Agent Driven Development base project will be docu
 
 - **`README.md`**: Added an `## Agent Models` section recommending different models per agent (reasoning-heavy roles on the strongest model, execution roles on a fast model) for better results; added a `## Getting Started (New Project Setup)` section describing the startup flow (write the brief → set up Git → ask the planner to read the brief and initialize project info → work via TODO files or chat); added the [opencode Go](https://opencode.ai/go?ref=ZHA0GMN860) subscription to the Compatibility section.
 
+#### README: Compatibility, TOC, Prerequisites, Getting Started and Troubleshooting
+
+- **`README.md`**:
+  - Rewrote the Compatibility section: daily use with the latest Kilo Code version, current opencode testing (settings at `.opencode/`, mainly `opencode.json`), and a paragraph on the opencode Go subscription also tested with other model providers (Grok, Gemini, custom models hosted on vast.ai).
+  - Added a Table of Contents.
+  - Made Git the only hard Prerequisite; the AI agent tool (Kilo Code, opencode, or any other handler app) is now a choice referencing the Compatibility section.
+  - Getting Started step 3 now references [Option 1](#option-1-using-a-todo-file-recommended)/[Option 2](#option-2-direct-chat-request) instead of an inline code block; the "Note on Project Info" block was moved from "How to Start a Task" into Getting Started.
+  - Added a note in "AI Agent Plans" about the fast accumulation of plan/report files (may be deleted, archived, or zipped).
+  - Added a Troubleshooting section clarifying that `Bifrost` and `vscode-mcp-server` are MCP plugins to install/configure in VSCode — normally harmless thanks to the adaptive `tool-selection-priority.md` rule, which users may edit if issues appear.
+
 ## 2026-09-07
 
 ### Changes

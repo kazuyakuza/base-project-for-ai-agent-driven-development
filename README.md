@@ -4,15 +4,33 @@ This project serves as a foundational template for future AI-agent driven develo
 
 **Attention AI Agents:** Before making any changes, you **must** read and adhere to the guidelines outlined in [`AGENTS.md`](AGENTS.md). This file contains critical information about the project's workflow, rules, and architectural standards.
 
+## Table of Contents
+
+- [Compatibility](#compatibility)
+- [Prerequisites](#prerequisites)
+- [About this Project](#about-this-project)
+- [Project Structure](#project-structure)
+- [The Critical Workflow](#the-critical-workflow)
+- [Agent Models](#agent-models)
+- [Getting Started (New Project Setup)](#getting-started-new-project-setup)
+- [How to Start a Task](#how-to-start-a-task)
+  - [Option 1: Using a TODO File (Recommended)](#option-1-using-a-todo-file-recommended)
+  - [Option 2: Direct Chat Request](#option-2-direct-chat-request)
+- [AI Agent Plans](#ai-agent-plans)
+- [Troubleshooting](#troubleshooting)
+
 ## Compatibility
 
-This template was implemented and tested with the **Kilo Code VSCode plugin**.
-Last Kilo Code tested version: **7.4.22**.
+This template is **used on a daily basis with the Kilo Code VSCode plugin**, always running on its latest version (Kilo Code tested version > **7.4.22**).
+
+Currently, the template is also **being tested with opencode**. For that purpose, opencode-specific settings were added to the project in [`.opencode/`](.opencode/), mainly the [`opencode.json`](.opencode/opencode.json) configuration file plus its own agent and command definitions. The rules are shared from `.kilo/rules/` — no duplication.
+
+The project is developed with an [**opencode Go**](https://opencode.ai/go?ref=ZHA0GMN860) subscription (see the list below). In addition to the opencode Go models, the agent setup has also been tested with other model providers, such as **Grok**, **Gemini**, and **custom models hosted on vast.ai**.
+
 This project should also work with:
 
 - Kilo Code previous versions
 - **Kilo Code CLI** (command-line interface)
-- **opencode** — compatible configuration is provided via the `.opencode/` directory (agents, commands, and `opencode.json`), sharing the same rules in `.kilo/rules/`
 - [**opencode Go**](https://opencode.ai/go?ref=ZHA0GMN860) — the premium opencode subscription this project is developed with
 - Any AI agent manager or similar tool that supports custom sub-agent definitions, rule files, and workflow commands via markdown-based configuration
 
@@ -20,8 +38,11 @@ The project uses standard Markdown-based configuration (`.kilo/`, `.opencode/`, 
 
 ## Prerequisites
 
-- **Kilo Code**: Optimized for the Kilo Code plugin for VSCode, with CLI support. See [compatibility section](#compatibility) for details.
-- **Git**: Ensure your environment is configured for the workflow. See [`how-to-set-up-git.md`](docs/how-to-set-up-git.md).
+The only hard requirement is **Git**. On top of it, you need an AI agent handler tool to drive the project — **Kilo Code** and **opencode** are the two tools this template is tested with, but any similar app should work:
+
+- **Git** — Required. Ensure your environment is configured for the workflow. See [`how-to-set-up-git.md`](docs/how-to-set-up-git.md).
+- **Kilo Code** or **opencode** — the tested AI agent tools (VSCode plugin/CLI for Kilo Code; CLI for opencode). See the [Compatibility](#compatibility) section for details.
+- **Any other AI agent handler app/software** — as long as it supports custom sub-agent definitions, rule files, and workflow commands via markdown-based configuration.
 
 ## About this Project
 
@@ -93,22 +114,17 @@ The workflow and sub-agent prompts are model-independent, so you can tune each a
 
 1. **Write the project brief** — Define the project's core requirements and scope in `.agent/project-info/brief.md`. AI agents rely on it for context across sessions; if it's not defined, agents may produce work that does not align with your goals.
 2. **Set up Git** — Configure Git for the workflow and store your credentials. See [`how-to-set-up-git.md`](docs/how-to-set-up-git.md).
-3. **Initialize project info** — Create a TODO file, or just type it in the chat, asking the planner to read the brief and initialize the project info. In a new chat, run:
-
-```text
-full read @AGENTS.md & follow /critical-workflow
-read @.agent/project-info/brief.md & initialize project info
-```
+3. **Initialize project info** — Ask the planner agent to read the brief and initialize the project info, either by creating a TODO file as described in [Option 1: Using a TODO File (Recommended)](#option-1-using-a-todo-file-recommended), or by typing the request directly in the chat as described in [Option 2: Direct Chat Request](#option-2-direct-chat-request).
 
 4. **Work with the planner** — From now on, just ask the planner agent to work through TODO files, or include tasks directly in the chat. See [How to Start a Task](#how-to-start-a-task).
+
+> **Note on Project Info:** When cloning this template for a new project, the Project Info initialization workflow triggers automatically (it detects the `.agent/project-info/.initialized` marker file). The file `.agent/project-info/brief.md` defines the project's core requirements and scope — AI agents rely on it for context across sessions. To initialize, run `/critical-workflow` and ask to "initialize project info". See [`.kilo/commands/project-info-init.md`](.kilo/commands/project-info-init.md) for details. If the project brief is not defined, agents may produce work that does not align with your goals.
 
 ## How to Start a Task
 
 To initiate work with an AI agent, use one of the following copy-paste friendly commands in the chat.
 
 > **Note:** The same chat templates below work in both Kilo Code and opencode. opencode loads the `/critical-workflow`, `/project-info-init`, and `/project-structure` commands from `.opencode/commands/`.
-
-> **Note on Project Info:** When cloning this template for a new project, the Project Info initialization workflow will trigger automatically. The file `.agent/project-info/brief.md` defines the project's core requirements and scope — AI agents rely on this for context across sessions. To initialize, run `/critical-workflow` and ask to "initialize project info". See [`.kilo/commands/project-info-init.md`](.kilo/commands/project-info-init.md) for details. If the project brief is not defined, agents may produce work that does not align with your goals.
 
 ### Option 1: Using a TODO File (Recommended)
 
@@ -139,6 +155,16 @@ The AI agent will ask for your approval before proceeding with plans. To skip ap
 ```text
 "Don't request me to approve plans"
 ```
+
+> **Note:** Agents generate many plan and/or report files (e.g., under `.kilo/plans/`) during the workflow. In addition to the TODO files, the amount of these "type" of files grows fast. You may delete, archive, or zip them at any time if they bother you.
+
+## Troubleshooting
+
+### MCP Tools (Bifrost, vscode-mcp-server)
+
+Some project files reference MCP tools such as `Bifrost_*` and `vscode-mcp-server_*` (e.g., in [`.kilo/rules/tool-selection-priority.md`](.kilo/rules/tool-selection-priority.md)). These are **MCP plugin types**: they are not bundled with this project — you must install and configure the corresponding MCP servers in **VSCode** for them to be available to the agents.
+
+This should not generate problems, because the mentioned rule is environment-adaptive: when those MCP tools are not exposed in the current environment, agents fall back to the built-in tools. However, if you do find issues caused by these declarations, you can simply edit or remove them in [`.kilo/rules/tool-selection-priority.md`](.kilo/rules/tool-selection-priority.md).
 
 ---
 
