@@ -22,6 +22,10 @@ permission:
     "Test-Path *": allow
     "Select-String *": allow
     "Get-ChildItem *": allow
+    "Measure-Object *": allow
+    "Write-Output *": allow
+    "Format-Table *": allow
+    "Where-Object *": allow
 ---
 
 You are an expert refactoring specialist. You simplify and refactor code to reduce complexity.

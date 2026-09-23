@@ -29,7 +29,7 @@ It is **EXTREMELY IMPORTANT** that all AI agents follow this workflow step by st
       - Generates a global plan file for steps 2–6 where **each TODO task gets its own 4.1–4.6 cycle**; do not question this and add 4.x cycle per task.
       - Include a global and per task pre-analysis, including specially technical & architecture decisions.
       - Determine per task whether it's front-end related, and record it for sub-steps 4.1a & 4.5a.
-      - If some tasks are extremely short/related, you may join them in a single step.
+      - If any tasks are extremely short/related, you may join/group them in a single step.
   3. Then:
       - auto-approve global plan **ONLY** if request or TODO file includes string: "Don't request me to approve plans".
       - otherwise you **MUST** present the global plan to the user using the `question` tool, including global plan file path and options:
@@ -114,7 +114,7 @@ Assign to architector sub-agent (`subagent_type: "architector"`).
 - Generate implementation plan:
   1. Think high-level approach to implement the TODO task, including steps for: git handling, code writing, console cmds (if required), test build (if exists), code review, unit test (if testing suite exists), docs updates, etc.
   2. Use the high-level approach to define an extensive and complete implementation plan, composed by very tiny and very detailed steps; include clear file names/paths, structure, code snippets, terminal cmd details, technical & architecture decisions, etc.
-  3. The plan must be generated for a **JUNIOR developer under 50% restriction**. All structural, architectural, and scope decisions MUST be encoded in the plan. Vague or judgment-requiring instructions are prohibited. If a choice between approaches exists, the plan must pick one.
+  3. The plan must be generated for a **JUNIOR developer under 50% restriction**. All structural, architectural, and scope decisions MUST be encoded in the plan. Vague or judgment-requiring instructions are prohibited. If a choice between approaches exists, the plan must pick one. The plan should not be a list c&p actions, implementer can reason and generate final code.
   4. [CRITICAL] Save plan to `.kilo/plans/<YYYYMMDD>-<plan-name>.md`.
   5. Compare to original task; redo if incorrect.
   6. Return the plan path to the Planner Agent. Otherwise, Planner Agent MUST resume task and request it.

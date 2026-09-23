@@ -21,6 +21,8 @@ permission:
     "npm typecheck*": allow
     "npm start*": allow
     "npm serve*": allow
+    "npm view*": allow
+    "npm ls*": allow
     "npm run lint*": allow
     "npm run build*": allow
     "npm run test*": allow
@@ -28,6 +30,14 @@ permission:
     "npm run start*": allow
     "npm run serve*": allow
     "git -C * log*": allow
+    "git -C * shortlog*": allow
+    "git -C * diff*": allow
+    "git -C * ls*": allow
+    "git -C * show*": allow
+    "git -C * status*": allow
+    "git -C * range-diff*": allow
+    "git -C * branch --show-current": allow
+    "git -C * check-ignore*": allow
     "git log*": allow
     "git shortlog*": allow
     "git diff*": allow
@@ -36,11 +46,16 @@ permission:
     "git status*": allow
     "git range-diff*": allow
     "git branch --show-current": allow
+    "git check-ignore*": allow
     "Get-Content *": allow
     "Select-Object *": allow
     "Test-Path *": allow
     "Select-String *": allow
     "Get-ChildItem *": allow
+    "Measure-Object *": allow
+    "Write-Output *": allow
+    "Format-Table *": allow
+    "Where-Object *": allow
   task: deny
   webfetch: allow
   mcp: allow
@@ -100,7 +115,7 @@ The implementer executing your plan is a **JUNIOR developer under 50% restrictio
   - "choose the best approach"
   - "optimize where possible"
 - If a choice between trivially equivalent implementations exists, the plan MUST pick one and specify it.
-- The plan MUST NOT be a set of "copy and paste" actions. Details, specification, line codes, code snippets, etc. are okay, but don't be too highly verbose in minor things. Implementer should handle minor things.
+- **However**, the plan MUST NOT be a set of "copy and paste" actions. Details, specification, line codes, code snippets, etc. are okay, but don't need to include files full code. Implementer should handle minor things.
 
 ## Boundaries
 

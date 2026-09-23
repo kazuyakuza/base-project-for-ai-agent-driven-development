@@ -41,7 +41,7 @@ Every time you start reasoning, first considerate the rules listed below:
 ```txt
 general: ls, cat, grep, wc, findstr
 with npx: jest
-with npm: lint, build, test, typecheck, start, serve
-with git: log, shortlog, diff, ls, show, status, range-diff, branch --show-current
-Get-Content, Select-Object, Test-Path, Select-String, Get-ChildItem
+with npm: lint, build, test, typecheck, start, serve, view, ls
+with git: log, shortlog, diff, ls, show, status, range-diff, branch --show-current, check-ignore
+Get-Content, Select-Object, Test-Path, Select-String, Get-ChildItem, Measure-Object, Write-Output, Format-Table, Where-Object
 ```

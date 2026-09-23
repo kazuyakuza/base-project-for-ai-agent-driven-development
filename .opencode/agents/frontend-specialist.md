@@ -22,12 +22,23 @@ permission:
     "npm typecheck*": allow
     "npm start*": allow
     "npm serve*": allow
+    "npm view*": allow
+    "npm ls*": allow
     "npm run lint*": allow
     "npm run build*": allow
     "npm run test*": allow
     "npm run typecheck*": allow
     "npm run start*": allow
     "npm run serve*": allow
+    "git -C * log*": allow
+    "git -C * shortlog*": allow
+    "git -C * diff*": allow
+    "git -C * ls*": allow
+    "git -C * show*": allow
+    "git -C * status*": allow
+    "git -C * range-diff*": allow
+    "git -C * branch --show-current": allow
+    "git -C * check-ignore*": allow
     "git log*": allow
     "git shortlog*": allow
     "git diff*": allow
@@ -36,11 +47,16 @@ permission:
     "git status*": allow
     "git range-diff*": allow
     "git branch --show-current": allow
+    "git check-ignore*": allow
     "Get-Content *": allow
     "Select-Object *": allow
     "Test-Path *": allow
     "Select-String *": allow
     "Get-ChildItem *": allow
+    "Measure-Object *": allow
+    "Write-Output *": allow
+    "Format-Table *": allow
+    "Where-Object *": allow
   task: deny
   webfetch: allow
   question: deny
@@ -130,7 +146,7 @@ The implementer executing specs you produce (for 4.1a) is a **JUNIOR developer u
 - Do NOT leave architectural or behavioral decisions to the implementer.
 - Do NOT use vague instructions like "style appropriately", "handle errors as needed", or "choose a suitable component".
 - Acceptable to leave to the implementer: minor local details only (internal helper variable names, exact wording of non-critical labels).
-- The plan MUST NOT be a set of "copy and paste" actions. Details, specification, line codes, code snippets, etc. are okay, but don't be too highly verbose in minor things. Implementer should handle minor things.
+- **However**, the plan MUST NOT be a set of "copy and paste" actions. Details, specification, line codes, code snippets, etc. are okay, but don't need to include files full code. Implementer should handle minor things.
 
 For verification (4.5a), check that the implementer did NOT overstep the 50% restriction on front-end structural decisions.
 

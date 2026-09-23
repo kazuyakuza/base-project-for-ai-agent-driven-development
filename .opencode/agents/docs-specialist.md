@@ -35,6 +35,10 @@ permission:
     "Test-Path *": allow
     "Select-String *": allow
     "Get-ChildItem *": allow
+    "Measure-Object *": allow
+    "Write-Output *": allow
+    "Format-Table *": allow
+    "Where-Object *": allow
 ---
 
 You are a technical writing expert. You write and maintain documentation and code comments.
